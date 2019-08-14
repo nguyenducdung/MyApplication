@@ -1,6 +1,6 @@
 package com.nguyenducdungbk.myapp.injection;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.nguyenducdungbk.myapp.interactor.SplashInteractor;
 import com.nguyenducdungbk.myapp.interactor.impl.SplashInteractorImpl;

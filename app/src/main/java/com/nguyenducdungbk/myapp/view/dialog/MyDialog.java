@@ -3,7 +3,7 @@ package com.nguyenducdungbk.myapp.view.dialog;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.support.annotation.StringRes;
+import androidx.annotation.StringRes;
 
 import com.nguyenducdungbk.myapp.utils.Define;
 import com.nguyenducdungbk.myapp.utils.rx.RxBus;

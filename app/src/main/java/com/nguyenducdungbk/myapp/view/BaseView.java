@@ -1,6 +1,6 @@
 package com.nguyenducdungbk.myapp.view;
 
-import android.support.annotation.StringRes;
+import androidx.annotation.StringRes;
 
 public interface BaseView {
 

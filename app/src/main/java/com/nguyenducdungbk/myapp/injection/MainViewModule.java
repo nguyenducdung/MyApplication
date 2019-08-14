@@ -1,7 +1,7 @@
 package com.nguyenducdungbk.myapp.injection;
 
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.nguyenducdungbk.myapp.interactor.MainInteractor;
 import com.nguyenducdungbk.myapp.interactor.impl.MainInteractorImpl;

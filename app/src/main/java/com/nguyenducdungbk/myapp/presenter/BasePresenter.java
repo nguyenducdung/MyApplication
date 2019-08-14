@@ -1,6 +1,6 @@
 package com.nguyenducdungbk.myapp.presenter;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.nguyenducdungbk.myapp.view.BaseView;
 

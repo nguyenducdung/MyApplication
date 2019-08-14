@@ -1,6 +1,6 @@
 package com.nguyenducdungbk.myapp.view.impl;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.nguyenducdungbk.myapp.MyApp;
 import com.nguyenducdungbk.myapp.R;
