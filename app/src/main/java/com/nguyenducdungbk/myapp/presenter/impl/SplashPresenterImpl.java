@@ -2,9 +2,18 @@ package com.nguyenducdungbk.myapp.presenter.impl;
 
 import androidx.annotation.NonNull;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.nguyenducdungbk.myapp.interactor.SplashInteractor;
+import com.nguyenducdungbk.myapp.network.response.Contact;
 import com.nguyenducdungbk.myapp.presenter.SplashPresenter;
 import com.nguyenducdungbk.myapp.view.SplashView;
-import com.nguyenducdungbk.myapp.interactor.SplashInteractor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -14,6 +23,9 @@ public final class SplashPresenterImpl extends BasePresenterImpl<SplashView> imp
      */
     @NonNull
     private final SplashInteractor mInteractor;
+
+    private List<Contact> data = new ArrayList<>();
+    private List<String> response = new ArrayList<>();
 
     // The view is available using the mView variable
 
@@ -27,6 +39,25 @@ public final class SplashPresenterImpl extends BasePresenterImpl<SplashView> imp
         super.onStart(viewCreated);
 
         // Your code here. Your view is available using mView and will not be null until next onStop()
+        if (viewCreated) {
+            DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("contacts");
+            myRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot != null) {
+                        for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                            response.add(dataSnapshot1.getValue().toString());
+                        }
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
     }
 
     @Override

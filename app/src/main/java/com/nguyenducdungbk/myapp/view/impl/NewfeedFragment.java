@@ -1,42 +1,40 @@
 package com.nguyenducdungbk.myapp.view.impl;
 
-import android.os.Handler;
-
 import androidx.annotation.NonNull;
 
 import com.nguyenducdungbk.myapp.R;
-import com.nguyenducdungbk.myapp.databinding.FragmentSplashBinding;
+import com.nguyenducdungbk.myapp.databinding.FragmentNewfeedBinding;
 import com.nguyenducdungbk.myapp.injection.AppComponent;
-import com.nguyenducdungbk.myapp.injection.DaggerSplashViewComponent;
-import com.nguyenducdungbk.myapp.injection.SplashViewModule;
-import com.nguyenducdungbk.myapp.presenter.SplashPresenter;
+import com.nguyenducdungbk.myapp.injection.DaggerNewfeedViewComponent;
+import com.nguyenducdungbk.myapp.injection.NewfeedViewModule;
+import com.nguyenducdungbk.myapp.presenter.NewfeedPresenter;
 import com.nguyenducdungbk.myapp.presenter.loader.PresenterFactory;
-import com.nguyenducdungbk.myapp.view.SplashView;
+import com.nguyenducdungbk.myapp.view.NewfeedView;
 
 import javax.inject.Inject;
 
-public final class SplashFragment extends BaseFragment<SplashPresenter, SplashView, FragmentSplashBinding> implements SplashView {
+public final class NewfeedFragment extends BaseFragment<NewfeedPresenter, NewfeedView, FragmentNewfeedBinding> implements NewfeedView {
     @Inject
-    PresenterFactory<SplashPresenter> mPresenterFactory;
+    PresenterFactory<NewfeedPresenter> mPresenterFactory;
 
     // Your presenter is available using the mPresenter variable
 
-    public SplashFragment() {
+    public NewfeedFragment() {
         // Required empty public constructor
     }
 
     @Override
     protected void setupComponent(@NonNull AppComponent parentComponent) {
-        DaggerSplashViewComponent.builder()
+        DaggerNewfeedViewComponent.builder()
                 .appComponent(parentComponent)
-                .splashViewModule(new SplashViewModule())
+                .newfeedViewModule(new NewfeedViewModule())
                 .build()
                 .inject(this);
     }
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.fragment_splash;
+        return R.layout.fragment_newfeed;
     }
 
     @Override
@@ -47,14 +45,12 @@ public final class SplashFragment extends BaseFragment<SplashPresenter, SplashVi
 
     @NonNull
     @Override
-    protected PresenterFactory<SplashPresenter> getPresenterFactory() {
+    protected PresenterFactory<NewfeedPresenter> getPresenterFactory() {
         return mPresenterFactory;
     }
 
     @Override
     public void initView() {
-        new Handler().postDelayed(() -> {
-            getViewController().replaceFragment(HomeFragment.class, null);
-        }, 2000);
+
     }
 }

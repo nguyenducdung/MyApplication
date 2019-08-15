@@ -50,4 +50,9 @@ public abstract class BasePresenterImpl<V extends BaseView> implements BasePrese
             compositeDisposable.dispose();
         }
     }
+
+    @Override
+    public void getData(String key) {
+
+    }
 }

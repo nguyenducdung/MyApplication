@@ -38,4 +38,6 @@ public interface BasePresenter<V extends BaseView> {
      * any resource used by the presenter (cancel HTTP requests, close database connection...).
      */
     void onPresenterDestroyed();
+
+    void getData(String key);
 }

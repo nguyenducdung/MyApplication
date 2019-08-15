@@ -2,6 +2,7 @@ package com.nguyenducdungbk.myapp.injection;
 
 import androidx.annotation.NonNull;
 
+import com.google.firebase.database.DatabaseReference;
 import com.nguyenducdungbk.myapp.interactor.SplashInteractor;
 import com.nguyenducdungbk.myapp.interactor.impl.SplashInteractorImpl;
 import com.nguyenducdungbk.myapp.presenter.loader.PresenterFactory;
