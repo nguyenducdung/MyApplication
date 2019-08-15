@@ -1,7 +1,12 @@
 package com.nguyenducdungbk.myapp.view.impl;
 
-import androidx.annotation.NonNull;
+import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.nguyenducdungbk.myapp.MyApp;
 import com.nguyenducdungbk.myapp.R;
 import com.nguyenducdungbk.myapp.databinding.ActivityMainBinding;
@@ -10,13 +15,25 @@ import com.nguyenducdungbk.myapp.injection.DaggerMainViewComponent;
 import com.nguyenducdungbk.myapp.injection.MainViewModule;
 import com.nguyenducdungbk.myapp.presenter.MainPresenter;
 import com.nguyenducdungbk.myapp.presenter.loader.PresenterFactory;
+import com.nguyenducdungbk.myapp.utils.permission.PermissionResultCallback;
 import com.nguyenducdungbk.myapp.view.MainView;
 
 import java.util.HashMap;
+import java.util.Locale;
 
 import javax.inject.Inject;
 
-public final class MainActivity extends BaseActivity<MainPresenter, MainView, ActivityMainBinding> implements MainView {
+public final class MainActivity extends BaseActivity<MainPresenter, MainView, ActivityMainBinding> implements MainView, GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener, PermissionResultCallback {
+
+    private static final int LOCATION_PERMISSIONS_REQUEST_CODE = 1001;
+    private static final int TURN_ON_GPS_REQUEST_CODE = 1002;
+    private static final int LOCATION_SETTING_REQUEST_CODE = 1004;
+
+    boolean isPermissionOk = false;
+
+    private Locale myLocale;
+
     @Inject
     PresenterFactory<MainPresenter> mPresenterFactory;
 
@@ -65,5 +82,35 @@ public final class MainActivity extends BaseActivity<MainPresenter, MainView, Ac
     public void initView() {
         super.initView();
         getViewController().addFragment(SplashFragment.class, new HashMap<>(), false, true);
+    }
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+
+    @Override
+    public void permissionGranted(int requestCode) {
+
+    }
+
+    @Override
+    public void permissionDenied(int requestCode) {
+
+    }
+
+    @Override
+    public void neverAskAgain(int requestCode) {
+
     }
 }

@@ -6,11 +6,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".view.impl.MapFragment">
-        <TextView
-            android:gravity="center"
-            android:text="Fragment Map"
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/mapView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent" />
     </FrameLayout>
 </layout>
 
