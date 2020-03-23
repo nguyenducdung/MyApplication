@@ -12,8 +12,6 @@ import com.nguyenducdungbk.myapp.presenter.MainPresenter;
 import com.nguyenducdungbk.myapp.presenter.loader.PresenterFactory;
 import com.nguyenducdungbk.myapp.view.MainView;
 
-import java.util.HashMap;
-
 import javax.inject.Inject;
 
 public final class MainActivity extends BaseActivity<MainPresenter, MainView, ActivityMainBinding> implements MainView {
@@ -64,6 +62,6 @@ public final class MainActivity extends BaseActivity<MainPresenter, MainView, Ac
     @Override
     public void initView() {
         super.initView();
-        getViewController().addFragment(SplashFragment.class, new HashMap<>(), false, true);
+        getViewController().addFragment(SplashFragment.class, null);
     }
 }

@@ -160,40 +160,6 @@ public abstract class BaseFragment<P extends BasePresenter<V>, V extends BaseVie
     @LayoutRes
     protected abstract int getLayoutResId();
 
-    public void setData(HashMap<String, Object> data) {
-        if (data == null || data.isEmpty()) {
-            return;
-        }
-        Bundle bundle = new Bundle();
-        for (Map.Entry<String, Object> entry : data.entrySet()) {
-            if (entry.getValue() instanceof String) {
-                bundle.putString(entry.getKey(), (String) entry.getValue());
-            } else if (entry.getValue() instanceof Double) {
-                bundle.putDouble(entry.getKey(), ((Double) entry.getValue()));
-            } else if (entry.getValue() instanceof Integer) {
-                bundle.putInt(entry.getKey(), (Integer) entry.getValue());
-            } else if (entry.getValue() instanceof Float) {
-                bundle.putFloat(entry.getKey(), ((Float) entry.getValue()));
-            } else if (entry.getValue() instanceof Boolean) {
-                bundle.putBoolean(entry.getKey(), ((Boolean) entry.getValue()));
-            } else if (entry.getValue() instanceof Parcelable) {
-                bundle.putParcelable(entry.getKey(), ((Parcelable) entry.getValue()));
-            } else if (entry.getValue() instanceof String[]) {
-                bundle.putStringArray(entry.getKey(), (String[]) entry.getValue());
-            } else if (entry.getValue() instanceof ArrayList) {
-                if (((ArrayList) entry.getValue()).size() > 0 && ((ArrayList) entry.getValue()).get(0) instanceof String) {
-                    bundle.putStringArrayList(entry.getKey(), (ArrayList<String>) entry.getValue());
-                } else if (((ArrayList) entry.getValue()).size() > 0 && ((ArrayList) entry.getValue()).get(0) instanceof Parcelable) {
-                    bundle.putParcelableArrayList(entry.getKey(), (ArrayList<? extends Parcelable>) entry.getValue());
-                }
-            } else if (entry.getValue() instanceof Serializable) {
-                bundle.putSerializable(entry.getKey(), ((Serializable) entry.getValue()));
-            }
-        }
-        setArguments(bundle);
-    }
-
-
     public void backFromAddFragment() {
         Bundle bundle = getArguments();
         if (bundle != null) {
@@ -203,8 +169,8 @@ public abstract class BaseFragment<P extends BasePresenter<V>, V extends BaseVie
                 bundle.remove(Define.Shortcut.SCREEN_BEFORE);
                 setArguments(bundle);
             } else if (screenBefore != null) {
-                HashMap<String, String> data = new HashMap<>();
-                data.put(Define.Shortcut.SCREEN_BEFORE, screenBefore);
+                Bundle data = new Bundle();
+                data.putString(Define.Shortcut.SCREEN_BEFORE, screenBefore);
                 getViewController().backFromAddFragment(data);
             }
         }

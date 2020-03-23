@@ -1,5 +1,6 @@
 package com.nguyenducdungbk.myapp.view.impl;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -41,7 +42,7 @@ public class ViewController<T extends BaseFragment> {
         return currentFragment;
     }
 
-    public void replaceFragment(Class<T> type, HashMap<String, Object> data) {
+    public void replaceFragment(Class<T> type, Bundle bundle) {
         /*
         // Comment: open two notification at the same time, will open two instances of a fragment
         if (currentFragment != null && currentFragment.getClass().getName().equalsIgnoreCase(type.getName())) {
@@ -52,8 +53,8 @@ public class ViewController<T extends BaseFragment> {
         } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
-        if (data != null) {
-            currentFragment.setData(data);
+        if (bundle != null) {
+            currentFragment.setArguments(bundle);
         }
         currentFragment.setViewController(this);
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -67,7 +68,7 @@ public class ViewController<T extends BaseFragment> {
         }
     }
 
-    public void addFragment(Class<T> type, HashMap<String, Object> data, boolean hasAnimation, boolean isHideOldFragment) {
+    public void addFragment(Class<T> type, Bundle bundle, boolean hasAnimation, boolean isHideOldFragment) {
         /*
         // Comment: open two notification at the same time, will open two instances of a fragment
         if (currentFragment != null && currentFragment.getClass().getName().equalsIgnoreCase(type.getName())) {
@@ -85,8 +86,8 @@ public class ViewController<T extends BaseFragment> {
         } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
-        if (newFragment != null && data != null) {
-            newFragment.setData(data);
+        if (newFragment != null && bundle != null) {
+            newFragment.setArguments(bundle);
         }
         if (newFragment != null) {
             newFragment.setViewController(this);
@@ -111,7 +112,7 @@ public class ViewController<T extends BaseFragment> {
         }
     }
 
-    public void addUnderFragment(Class<T> type, HashMap<String, Object> data) {
+    public void addUnderFragment(Class<T> type, Bundle bundle) {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         T newFragment = null;
         try {
@@ -119,8 +120,8 @@ public class ViewController<T extends BaseFragment> {
         } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
-        if (newFragment != null && data != null) {
-            newFragment.setData(data);
+        if (newFragment != null && bundle != null) {
+            newFragment.setArguments(bundle);
         }
         if (newFragment != null) {
             newFragment.setViewController(this);
@@ -159,7 +160,7 @@ public class ViewController<T extends BaseFragment> {
         }
     }
 
-    public void addFragmentUpAnimation(Class<T> type, HashMap<String, Object> data, boolean hasAnimation) {
+    public void addFragmentUpAnimation(Class<T> type, Bundle bundle, boolean hasAnimation) {
         /*
         // Comment: open two notification at the same time, will open two instances of a fragment
         if (currentFragment != null && currentFragment.getClass().getName().equalsIgnoreCase(type.getName())) {
@@ -177,8 +178,8 @@ public class ViewController<T extends BaseFragment> {
         } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
-        if (newFragment != null && data != null) {
-            newFragment.setData(data);
+        if (newFragment != null && bundle != null) {
+            newFragment.setArguments(bundle);
         }
         if (newFragment != null) {
             newFragment.setViewController(this);
@@ -200,15 +201,15 @@ public class ViewController<T extends BaseFragment> {
         }
     }
 
-    public void addFragmentUpAnimation(Class<T> type, HashMap<String, Object> data) {
+    public void addFragmentUpAnimation(Class<T> type, Bundle data) {
         addFragmentUpAnimation(type, data, true);
     }
 
-    public void addFragment(Class<T> type, HashMap<String, Object> data) {
+    public void addFragment(Class<T> type, Bundle data) {
         addFragment(type, data, true, true);
     }
 
-    public boolean backFromAddFragment(HashMap<String, Object> data) {
+    public boolean backFromAddFragment(Bundle data) {
         if (listAddFragment.size() >= 2) {
             listAddFragment.remove(listAddFragment.size() - 1);
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -216,7 +217,7 @@ public class ViewController<T extends BaseFragment> {
             fragmentTransaction.setCustomAnimations(R.anim.trans_right_out, R.anim.trans_right_out);
             currentFragment = listAddFragment.get(listAddFragment.size() - 1);
             if (data != null) {
-                currentFragment.setData(data);
+                currentFragment.setArguments(data);
             }
             currentFragment.setViewController(this);
             currentFragment.setUserVisibleHint(true);
@@ -233,7 +234,7 @@ public class ViewController<T extends BaseFragment> {
         }
     }
 
-    public boolean backTwoStepFromAddFragment(HashMap<String, Object> data) {
+    public boolean backTwoStepFromAddFragment(Bundle data) {
         if (listAddFragment.size() >= 3) {
             listAddFragment.remove(listAddFragment.size() - 1);
             listAddFragment.remove(listAddFragment.size() - 1);
@@ -242,7 +243,7 @@ public class ViewController<T extends BaseFragment> {
             fragmentTransaction.setCustomAnimations(R.anim.trans_right_out, R.anim.trans_right_out);
             currentFragment = listAddFragment.get(listAddFragment.size() - 1);
             if (data != null) {
-                currentFragment.setData(data);
+                currentFragment.setArguments(data);
             }
             currentFragment.setViewController(this);
             currentFragment.setUserVisibleHint(true);
@@ -259,7 +260,7 @@ public class ViewController<T extends BaseFragment> {
         }
     }
 
-    public boolean removeAllFragment(HashMap<String, Object> data) {
+    public boolean removeAllFragment(Bundle data) {
         if (listAddFragment.size() >= 0) {
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             for (int i = listAddFragment.size() - 1; i > 0; i--) {
@@ -270,7 +271,7 @@ public class ViewController<T extends BaseFragment> {
             listAddFragment.add(currentFragment);
 
             if (data != null) {
-                currentFragment.setData(data);
+                currentFragment.setArguments(data);
             }
             currentFragment.setViewController(this);
             currentFragment.setUserVisibleHint(true);
@@ -286,7 +287,7 @@ public class ViewController<T extends BaseFragment> {
         }
     }
 
-    public boolean removeAllFragmentExceptFirst(HashMap<String, Object> data) {
+    public boolean removeAllFragmentExceptFirst(Bundle data) {
         if (listAddFragment.size() >= 2) {
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             for (int i = listAddFragment.size() - 1; i > 0; i--) {
@@ -297,7 +298,7 @@ public class ViewController<T extends BaseFragment> {
             listAddFragment.add(currentFragment);
 
             if (data != null) {
-                currentFragment.setData(data);
+                currentFragment.setArguments(data);
             }
             currentFragment.setViewController(this);
             currentFragment.setUserVisibleHint(true);
@@ -313,7 +314,7 @@ public class ViewController<T extends BaseFragment> {
         }
     }
 
-    public boolean backFromAddFragmentDownAnimation(HashMap<String, Object> data) {
+    public boolean backFromAddFragmentDownAnimation(Bundle data) {
         if (listAddFragment.size() >= 2) {
             listAddFragment.remove(listAddFragment.size() - 1);
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -321,7 +322,7 @@ public class ViewController<T extends BaseFragment> {
             fragmentTransaction.setCustomAnimations(R.anim.slide_down, R.anim.slide_down);
             currentFragment = listAddFragment.get(listAddFragment.size() - 1);
             if (data != null) {
-                currentFragment.setData(data);
+                currentFragment.setArguments(data);
             }
             currentFragment.setViewController(this);
             currentFragment.setUserVisibleHint(true);
