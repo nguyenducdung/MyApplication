@@ -3,4 +3,16 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="colorWhite">#FFF</color>
+    <color name="colorGray">#CCC</color>
+    <color name="colorOrganButton">#EF6C00</color>
+    <color name="colorGreenButton">#43A047</color>
+    <color name="backgroundDangNhap">#68992e</color>
+    <color name="colorRed">#e40404</color>
+    <color name="backgroundToolbar">#d77a09</color>
+    <color name="backgroundtransparentGreen">#6643A047</color>
+    <color name="colorBlack">#000</color>
+    <color name="color_gray_373731">#373731</color>
+    <color name="com_facebook_picker_search_bar_background">#f5f5f7</color>
+    <color name="com_facebook_picker_search_bar_text">#bcbdc2</color>
 </resources>

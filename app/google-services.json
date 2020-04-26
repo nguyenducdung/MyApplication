@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "8621197450",
+    "firebase_url": "https://datnsmartoder.firebaseio.com",
+    "project_id": "datnsmartoder",
+    "storage_bucket": "datnsmartoder.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:8621197450:android:7825b5f4a159ecb89d4573",
+        "android_client_info": {
+          "package_name": "com.nguyenducdung.smartrestaurant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "8621197450-l3g2agk21kr6tfduleu9spr47j56dfpf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nguyenducdung.smartrestaurant",
+            "certificate_hash": "b048f2b63088f7f6850e539b8af7df184fbd0697"
+          }
+        },
+        {
+          "client_id": "8621197450-tijmb0g6g0232umt8fdmnmc0l8fho6s6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDR7KkL0jKEGawq51LonusyLRDGnlpWD9M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "8621197450-tijmb0g6g0232umt8fdmnmc0l8fho6s6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

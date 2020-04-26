@@ -2,4 +2,15 @@
     <string name="app_name">Smart Restaurant</string>
 
     <string name="ok">Ok</string>
+    <string name="ten_dang_nhap">Tên đăng nhập</string>
+    <string name="so_dien_thoai">Số điện thoại</string>
+    <string name="dang_nhap">Đăng nhập</string>
+    <string name="vui_long_nhap_ho_ten">Vui lòng nhập đầy đủ họ tên</string>
+    <string name="vui_long_nhap_so_dien_thoai">Vui lòng nhập đầy đủ số điện thoại</string>
+    <string name="phone_valid">Số điện thoại của bạn không đúng định dạng!</string>
+    <string name="login_success">Đăng nhập thành công!</string>
+    <string name="trang_chu">Trang chủ</string>
+    <string name="staff">Nhân viên</string>
+    <string name="ca_nhan">Cá nhân</string>
+    <string name="mon_da_goi">Món đã gọi</string>
 </resources>

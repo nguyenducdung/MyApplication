@@ -62,6 +62,6 @@ public final class MainActivity extends BaseActivity<MainPresenter, MainView, Ac
     @Override
     public void initView() {
         super.initView();
-        getViewController().addFragment(HomeFragment.class, null);
+        getViewController().addFragment(LoginFragment.class, null);
     }
 }

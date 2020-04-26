@@ -1,0 +1,31 @@
+package com.nguyenducdungbk.myapp.injection;
+
+import android.support.annotation.NonNull;
+
+import com.nguyenducdungbk.myapp.interactor.FoodStatusInteractor;
+import com.nguyenducdungbk.myapp.interactor.impl.FoodStatusInteractorImpl;
+import com.nguyenducdungbk.myapp.presenter.FoodStatusPresenter;
+import com.nguyenducdungbk.myapp.presenter.impl.FoodStatusPresenterImpl;
+import com.nguyenducdungbk.myapp.presenter.loader.PresenterFactory;
+
+import dagger.Module;
+import dagger.Provides;
+
+@Module
+public final class FoodStatusViewModule {
+    @Provides
+    public FoodStatusInteractor provideInteractor() {
+        return new FoodStatusInteractorImpl();
+    }
+
+    @Provides
+    public PresenterFactory<FoodStatusPresenter> providePresenterFactory(@NonNull final FoodStatusInteractor interactor) {
+        return new PresenterFactory<FoodStatusPresenter>() {
+            @NonNull
+            @Override
+            public FoodStatusPresenter create() {
+                return new FoodStatusPresenterImpl(interactor);
+            }
+        };
+    }
+}

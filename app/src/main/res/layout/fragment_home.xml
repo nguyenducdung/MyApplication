@@ -2,10 +2,184 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <FrameLayout
+    <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/rl_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.impl.HomeFragment">
+        android:background="@color/colorWhite">
 
-    </FrameLayout>
+        <FrameLayout
+            android:id="@+id/flMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/cv_tab_background" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cv_tab_background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="20dp">
+
+            <LinearLayout
+                android:id="@+id/llTab"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_bottom_navigation"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/_dp7"
+                android:paddingBottom="@dimen/_dp7"
+                tools:ignore="DisableBaselineAlignment">
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/cl_home"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/ivTabHome"
+                        android:layout_width="@dimen/_dp32"
+                        android:layout_height="@dimen/_dp32"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/_dp3"
+                        android:src="@drawable/icon_home_selected"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:id="@+id/tvTitleHome"
+                        style="@style/TextViewNormal"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="4dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/lato_bold"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:text="@string/trang_chu"
+                        android:textAllCaps="false"
+                        android:textColor="@color/color_gray_373731"
+                        android:textSize="@dimen/text_size12"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ivTabHome" />
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/cl_food"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/iv_food"
+                        android:layout_width="@dimen/_dp32"
+                        android:layout_height="@dimen/_dp32"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/_dp3"
+                        android:src="@drawable/ic_y_kien"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:id="@+id/tvTitleFood"
+                        style="@style/TextViewNormal"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/_dp4"
+                        android:layout_marginBottom="@dimen/margin_5dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/lato_bold"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:text="@string/mon_da_goi"
+                        android:textAllCaps="false"
+                        android:textColor="@color/color_gray_373731"
+                        android:textSize="@dimen/text_size12"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/iv_food" />
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/cl_staff"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/iv_staff"
+                        android:layout_width="@dimen/_dp32"
+                        android:layout_height="@dimen/_dp32"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/_dp3"
+                        android:src="@drawable/icon_staff"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:id="@+id/tvTitleStaff"
+                        style="@style/TextViewNormal"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/_dp4"
+                        android:layout_marginBottom="@dimen/margin_5dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/lato_bold"
+                        android:includeFontPadding="false"
+                        android:lines="1"
+                        android:text="@string/staff"
+                        android:textAllCaps="false"
+                        android:textColor="@color/color_gray_373731"
+                        android:textSize="@dimen/text_size12"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/iv_staff" />
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/cl_my_page"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/iv_my_page"
+                        android:layout_width="@dimen/_dp32"
+                        android:layout_height="@dimen/_dp32"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/_dp3"
+                        android:src="@drawable/ic_personal_yellow"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:id="@+id/tv_my_page"
+                        style="@style/TextViewNormal"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/_dp4"
+                        android:layout_marginBottom="@dimen/margin_5dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/lato_bold"
+                        android:includeFontPadding="false"
+                        android:lines="1"
+                        android:text="@string/ca_nhan"
+                        android:textAllCaps="false"
+                        android:textColor="@color/color_gray_373731"
+                        android:textSize="@dimen/text_size12"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/iv_my_page" />
+                </android.support.constraint.ConstraintLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </RelativeLayout>
 </layout>
