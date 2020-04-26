@@ -11,6 +11,7 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
     <!--text view normal-->
@@ -28,5 +29,9 @@
 
     <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@drawable/bg_radius_top_16dp</item>
+    </style>
+    <!--lato bold-->
+    <style name="TextViewNormalBold" parent="TextViewNormal">
+        <item name="android:fontFamily">@font/lato_bold</item>
     </style>
 </resources>

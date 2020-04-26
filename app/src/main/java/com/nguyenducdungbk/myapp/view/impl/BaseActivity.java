@@ -1,5 +1,6 @@
 package com.nguyenducdungbk.myapp.view.impl;
 
+import android.app.Activity;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
@@ -8,6 +9,8 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.nguyenducdungbk.myapp.MyApp;
 import com.nguyenducdungbk.myapp.R;
@@ -51,6 +54,7 @@ public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setStatusBarGradiant(this);
         mFirstStart = true;
 
         binding = DataBindingUtil.setContentView(this, getLayoutResId());
@@ -63,6 +67,13 @@ public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseVie
 
     private void injectDependencies() {
         setupComponent(((MyApp) getApplication()).getAppComponent());
+    }
+
+    public void setStatusBarGradiant(Activity activity) {
+        Window window = activity.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(activity.getResources().getColor(android.R.color.transparent));
+        window.setNavigationBarColor(activity.getResources().getColor(android.R.color.black));
     }
 
     @Override

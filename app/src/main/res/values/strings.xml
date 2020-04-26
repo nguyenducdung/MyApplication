@@ -13,4 +13,6 @@
     <string name="staff">Nhân viên</string>
     <string name="ca_nhan">Cá nhân</string>
     <string name="mon_da_goi">Món đã gọi</string>
+    <string name="edit_title">Chỉnh sửa</string>
+    <string name="logout">Đăng xuất</string>
 </resources>
