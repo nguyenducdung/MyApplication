@@ -15,4 +15,6 @@
     <string name="mon_da_goi">Món đã gọi</string>
     <string name="edit_title">Chỉnh sửa</string>
     <string name="logout">Đăng xuất</string>
+    <string name="danh_sach_nhan_vien">Danh sách nhân viên</string>
+    <string name="staff_description">Nếu có bất kì thắc mắc hoặc khiếu nại gì đến nhà hàng, nhân viên,... Quý khách vui lòng liên hệ trực tiếp đến quản lý phụ trách cửa hàng!</string>
 </resources>

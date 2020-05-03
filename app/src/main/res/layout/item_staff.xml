@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout
+        android:paddingTop="@dimen/_dp8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_staff"
+            android:layout_marginStart="@dimen/_dp24"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/ic_personal_yellow"
+            android:layout_width="@dimen/_dp56"
+            android:layout_height="@dimen/_dp56"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:textColor="@color/color_3A454D"
+            android:layout_marginEnd="@dimen/_dp24"
+            android:layout_marginStart="@dimen/_dp12"
+            android:fontFamily="@font/lato_bold"
+            android:textSize="@dimen/text_size16"
+            android:text="Nguyễn Đức Dũng"
+            android:id="@+id/tv_name_staff"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_staff"
+            android:layout_width="@dimen/_dp0"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:textSize="@dimen/text_size14"
+            android:text="Chức vụ: Bếp trưởng"
+            android:id="@+id/tv_position"
+            android:layout_marginTop="@dimen/_dp4"
+            android:layout_marginEnd="@dimen/_dp24"
+            android:layout_marginStart="@dimen/_dp12"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_staff"
+            app:layout_constraintTop_toBottomOf="@id/tv_name_staff"
+            android:layout_width="@dimen/_dp0"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:textSize="@dimen/text_size14"
+            android:fontFamily="@font/lato_bold"
+            android:textColor="@color/blue_2F94E5"
+            android:text="Đang hoạt động"
+            android:id="@+id/tv_status"
+            android:layout_marginTop="@dimen/_dp4"
+            app:layout_constraintEnd_toEndOf="@id/tv_name_staff"
+            app:layout_constraintTop_toBottomOf="@id/tv_position"
+            app:layout_constraintStart_toStartOf="@id/tv_name_staff"
+            android:layout_width="@dimen/_dp0"
+            android:layout_height="wrap_content"/>
+
+        <View
+            android:layout_marginEnd="@dimen/_dp24"
+            android:layout_marginStart="@dimen/_dp24"
+            android:background="#BDBDBD"
+            android:layout_marginTop="@dimen/_dp8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_status"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

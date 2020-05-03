@@ -47,6 +47,7 @@
                         tools:ignore="ContentDescription" />
 
                     <TextView
+                        android:text="Nguyễn Đức Dũng"
                         android:id="@+id/tv_title"
                         style="@style/TextViewNormalBold"
                         android:layout_marginStart="@dimen/margin_16dp"
