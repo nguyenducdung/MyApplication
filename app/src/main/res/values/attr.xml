@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="SelectableRoundedImageView">
+        <attr name="sriv_left_top_corner_radius" format="dimension" />
+        <attr name="sriv_right_top_corner_radius" format="dimension" />
+        <attr name="sriv_left_bottom_corner_radius" format="dimension" />
+        <attr name="sriv_right_bottom_corner_radius" format="dimension" />
+        <attr name="sriv_border_width" format="dimension" />
+        <attr name="sriv_border_color" format="color" />
+        <attr name="sriv_oval" format="boolean" />
+        <attr name="android:scaleType" />
+    </declare-styleable>
+
+
+    <declare-styleable name="RestaurantToolbar">
+        <attr name="tvtb_visible_back_button" format="boolean" />
+        <attr name="tvtb_title" format="string" />
+        <attr name="tvtb_title_font" format="reference" />
+        <attr name="tvtb_title_left" format="boolean" />
+        <attr name="tvtb_right_icon_src" format="reference" />
+        <attr name="tvtb_left_icon_src" format="reference" />
+        <attr name="tvtb_right_icon_padding" format="reference" />
+        <attr name="tvtb_visible_search" format="boolean" />
+    </declare-styleable>
+</resources>

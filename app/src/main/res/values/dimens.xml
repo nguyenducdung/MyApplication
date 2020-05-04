@@ -182,7 +182,7 @@
     <dimen name="_dp320">320dp</dimen>
     <dimen name="_dp65">65dp</dimen>
     <dimen name="card_width_emergency">272dp</dimen>
-    <dimen name="card_height_emergency">193dp</dimen>
+    <dimen name="card_height_emergency">180dp</dimen>
     <dimen name="_dp56">56dp</dimen>
     <dimen name="_dp62">62dp</dimen>
     <dimen name="_dp11">11dp</dimen>

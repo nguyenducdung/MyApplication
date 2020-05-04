@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?actionBarSize">
+
+    <ImageView
+        android:id="@+id/ivBackToolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_dp42"
+        android:layout_centerVertical="true"
+        android:paddingStart="@dimen/_dp16"
+        android:paddingTop="@dimen/_dp10"
+        android:paddingBottom="@dimen/_dp10"
+        android:src="@drawable/ic_back"
+        android:tint="@color/black" />
+
+    <TextView
+        android:id="@+id/tvTitleToolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_toStartOf="@id/ivRightIconToolbar"
+        android:layout_toEndOf="@id/ivBackToolbar"
+        android:ellipsize="end"
+        android:fontFamily="@font/lato_bold"
+        android:gravity="center"
+        android:maxLines="2"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size16"
+        tools:text="Điểm đến du lịch thú vị" />
+
+    <ImageView
+        android:id="@+id/ivRightIconToolbar"
+        android:layout_width="@dimen/_dp42"
+        android:layout_height="@dimen/_dp42"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/_dp12"
+        android:padding="@dimen/_dp8" />
+
+    <RelativeLayout
+        android:id="@+id/rlSearch"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_dp40"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/_dp60"
+        android:layout_marginTop="@dimen/_dp2"
+        android:layout_marginEnd="@dimen/_dp16"
+        android:background="@drawable/bg_search_toolbar"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/llSearch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toStartOf="@id/ivClose"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/_dp24"
+                android:layout_height="@dimen/_dp24"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/_dp12"
+                android:layout_marginEnd="@dimen/_dp12"
+                android:padding="@dimen/_dp4"
+                android:src="@drawable/ic_search_toolbar" />
+
+            <EditText
+                android:id="@+id/etSearch"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:ellipsize="end"
+                android:fontFamily="@font/lato_regular"
+                android:gravity="center_vertical"
+                android:hint="Tìm kiếm"
+                android:imeOptions="actionSearch"
+                android:maxLength="200"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="#3A454D"
+                android:textColorHint="#A4A6A8"
+                android:textSize="@dimen/text_size16" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivClose"
+            android:layout_width="@dimen/_dp40"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:paddingStart="@dimen/_dp4"
+            android:paddingTop="@dimen/_dp8"
+            android:paddingEnd="@dimen/_dp10"
+            android:paddingBottom="@dimen/_dp8"
+            android:src="@drawable/icon_close"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlSearchDisable"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_dp40"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/_dp60"
+        android:layout_marginTop="@dimen/_dp2"
+        android:layout_marginEnd="@dimen/_dp16"
+        android:background="@drawable/bg_search_toolbar"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/llSearchDisable"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toStartOf="@id/ivCloseDisable"
+            android:orientation="horizontal"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:layout_width="@dimen/_dp24"
+                android:layout_height="@dimen/_dp24"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/_dp12"
+                android:layout_marginEnd="@dimen/_dp12"
+                android:padding="@dimen/_dp4"
+                android:src="@drawable/ic_search_toolbar" />
+
+            <TextView
+                android:id="@+id/tvSearch"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:ellipsize="end"
+                android:fontFamily="@font/lato_bold"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="#3A454D"
+                android:textColorHint="#A4A6A8"
+                android:textSize="@dimen/text_size16" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivCloseDisable"
+            android:layout_width="@dimen/_dp40"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:paddingStart="@dimen/_dp4"
+            android:paddingTop="@dimen/_dp8"
+            android:paddingEnd="@dimen/_dp10"
+            android:paddingBottom="@dimen/_dp8"
+            android:src="@drawable/icon_close"
+            android:visibility="visible" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

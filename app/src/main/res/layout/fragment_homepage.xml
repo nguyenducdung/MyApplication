@@ -1,12 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <FrameLayout
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorRed"
-        tools:context=".view.impl.HomepageFragment">
+        android:layout_height="wrap_content">
 
-    </FrameLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            tools:context=".view.impl.HomepageFragment">
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/cl_user"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:background="@color/red_b8403c">
+
+                <TextView
+                    android:id="@+id/tv_name_user"
+                    android:layout_width="@dimen/_dp0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_dp16"
+                    android:layout_marginTop="@dimen/_dp8"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="Xin chào, Nguyễn Đức Dũng"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size16"
+                    app:layout_constraintEnd_toStartOf="@id/tv_coin"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_coin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_dp16"
+                    android:background="@drawable/bg_radius_16dp"
+                    android:drawableStart="@drawable/icon_coin"
+                    android:drawablePadding="@dimen/_dp6"
+                    android:fontFamily="@font/lato_bold"
+                    android:padding="@dimen/_dp6"
+                    android:text="123"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size14"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_name_user"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_name_user" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <TextView
+                android:elevation="@dimen/_dp8"
+                android:id="@+id/tv_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cl_user"
+                android:layout_marginStart="@dimen/_dp36"
+                android:layout_marginEnd="@dimen/_dp36"
+                android:background="@drawable/bg_radius_stroke_16dp"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:fontFamily="@font/lato_bold"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:padding="@dimen/_dp10"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:text="Chào mừng bạn đến với nhà hàng của chúng tôi, chúc bạn một bữa ăn ngon miệng!"
+                android:textColor="@color/black"
+                android:translationY="-18dp" />
+
+            <RelativeLayout
+                android:layout_marginStart="@dimen/_dp24"
+                android:layout_marginEnd="@dimen/_dp24"
+                android:layout_below="@id/tv_description"
+                android:id="@+id/rl_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_search_input_field_dbdbdb">
+
+                <ImageView
+                    android:id="@+id/iv_search"
+                    android:layout_width="@dimen/_dp28"
+                    android:layout_height="@dimen/_dp28"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/margin_8dp"
+                    android:layout_marginTop="@dimen/margin_6dp"
+                    android:layout_marginBottom="@dimen/margin_6dp"
+                    android:adjustViewBounds="true"
+                    android:padding="6.5dp"
+                    android:src="@drawable/ic_search_gray"
+                    tools:ignore="ContentDescription" />
+
+                <EditText
+                    android:hint="Tìm kiếm món ăn"
+                    android:id="@+id/edt_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/margin_4dp"
+                    android:layout_marginEnd="@dimen/margin_4dp"
+                    android:layout_toEndOf="@id/iv_search"
+                    android:imeOptions="actionSearch"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:inputType="text"
+                    android:maxLength="255"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@color/color_hint_text_dark"
+                    android:textCursorDrawable="@null"
+                    android:textSize="@dimen/text_size14"
+                    tools:ignore="Autofill" />
+
+            </RelativeLayout>
+
+            <com.nguyenducdungbk.myapp.view.custom.FoodCategoryBottom
+                android:layout_marginTop="@dimen/_dp16"
+                android:id="@+id/fcb_again_food"
+                android:layout_below="@id/rl_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.nguyenducdungbk.myapp.view.custom.FoodCategoryBottom
+                android:layout_marginTop="@dimen/_dp16"
+                android:id="@+id/fcb_offer_food"
+                android:layout_below="@id/fcb_again_food"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.nguyenducdungbk.myapp.view.custom.FoodCategoryBottom
+                android:layout_marginTop="@dimen/_dp16"
+                android:id="@+id/fcb_promotion_food"
+                android:layout_below="@id/fcb_offer_food"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+        </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+
 </layout>

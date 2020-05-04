@@ -66,7 +66,7 @@
     <color name="color_gray_ECECEC">#ECECEC</color>
     <color name="color_bg_nav_bar_light">#ffffff</color>
     <color name="color_bg_nav_bar_dark">#484A56</color>
-    <color name="color_nav_bar_shadow">#DBDBDB</color>
+    <color name="color_nav_bar_shadow">#80DBDBDB</color>
     <color name="color_small_box_selected">#616161</color>
     <color name="color_chat_bubble_translate_separate">#FFB7B7B7</color>
     <color name="color_chat_bubble_translate_above_text">#FF878787</color>

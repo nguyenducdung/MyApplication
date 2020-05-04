@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/rl_title_category"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_dp44">
+
+        <TextView
+            android:id="@+id/tv_title_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_dp24"
+            android:fontFamily="@font/lato_bold"
+            android:text="Món ăn phổ biến"
+            android:textColor="@color/color_gray_3A454D"
+            android:textSize="@dimen/text_size16"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:id="@+id/ll_view_all"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_dp40"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/_dp24"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/lato_regular"
+                android:includeFontPadding="false"
+                android:text="Xem tất cả"
+                android:textColor="@color/red_b8403c"
+                android:textSize="@dimen/text_size14" />
+
+            <ImageView
+                android:layout_width="@dimen/_dp8"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_dp6"
+                android:src="@drawable/ic_arrow_right_red"
+                android:tint="@color/red_b8403c" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_food_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_title_category"
+        android:clipToPadding="false"
+        android:paddingStart="@dimen/_dp24"
+        android:paddingTop="@dimen/_dp12"
+        android:paddingEnd="@dimen/_dp10"
+        tools:ignore="RtlSymmetry"
+        tools:itemCount="5"
+        tools:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_food_horizontal"
+        tools:orientation="horizontal" />
+
+</RelativeLayout>
