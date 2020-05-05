@@ -15,10 +15,10 @@ android {
     buildTypes {
         debug { //FIXME Change debug config
 //                signingConfig signingConfigs.debug
-            buildConfigField "String", "API_BASE_URL", "\"http://rikkei.com/\"" // FIXME
+            buildConfigField "String", "API_BASE_URL", "\"https://datnsmartoder.firebaseio.com/\"" // FIXME
         }
         release {
-            buildConfigField "String", "API_BASE_URL", "\"http://rikkei.com/\""
+            buildConfigField "String", "API_BASE_URL", "\"https://datnsmartoder.firebaseio.com/\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -84,4 +84,5 @@ dependencies {
     // Matching view
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'com.google.firebase:firebase-database:16.0.1'
 }

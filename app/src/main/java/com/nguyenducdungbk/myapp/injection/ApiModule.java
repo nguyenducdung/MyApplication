@@ -25,7 +25,7 @@ public class ApiModule {
     @Singleton
     Apis provideApiService(OkHttpClient client, GsonConverterFactory gson, RxJava2CallAdapterFactory rxAdapter) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("")
+                .baseUrl("https://datnsmartoder.firebaseio.com/")
                 .client(client)
                 .addConverterFactory(gson)
                 .addCallAdapterFactory(rxAdapter)

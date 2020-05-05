@@ -27,6 +27,28 @@ public final class LoginPresenterImpl extends BasePresenterImpl<LoginView> imple
         super.onStart(viewCreated);
 
         // Your code here. Your view is available using mView and will not be null until next onStop()
+        if (viewCreated) {
+            getListUser();
+        }
+    }
+
+    private void getListUser() {
+        compositeDisposable.add(mInteractor.getListUser()
+                .doOnSubscribe(disposable -> {
+                    if (mView != null) {
+                        mView.showLoading();
+                    }
+                })
+                .doFinally(() -> {
+                    if (mView != null) {
+                        mView.hiddenLoading();
+                    }
+                })
+                .subscribe(response -> {
+                    if (response != null && mView != null) {
+                        response.getUserList();
+                    }
+                }, Throwable::printStackTrace));
     }
 
     @Override
