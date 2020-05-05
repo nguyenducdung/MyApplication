@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.impl.FoodOrderFragment">
+
+        <com.nguyenducdungbk.myapp.view.custom.RestaurantToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tvtb_title="Tóm tắt đơn hàng" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/toolbar"
+            android:background="#BDBDBD" />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_above="@id/rl_pay"
+            android:id="@+id/rv_food"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view"
+            tools:listitem="@layout/item_food_order" />
+
+        <RelativeLayout
+            android:id="@+id/rl_pay"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/_dp12">
+
+            <TextView
+                android:id="@+id/tv_money_title"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_dp24"
+                android:layout_marginStart="@dimen/_dp24"
+                android:fontFamily="@font/lato_regular"
+                android:gravity="center"
+                android:text="Tổng cộng"
+                android:textSize="@dimen/text_size14" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/tv_money_title"
+                android:layout_alignBottom="@id/tv_money_title"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/_dp24"
+                android:fontFamily="@font/lato_bold"
+                android:text="240.000 đồng"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size16" />
+
+            <Button
+                android:id="@+id/btn_pay"
+                style="@style/RegisterTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_money_title"
+                android:layout_marginStart="@dimen/_dp24"
+                android:layout_marginTop="@dimen/_dp8"
+                android:layout_marginEnd="@dimen/_dp24"
+                android:layout_marginBottom="@dimen/margin_8dp"
+                android:background="@drawable/bg_radius_16dp"
+                android:backgroundTint="@color/color_red_EF5050"
+                android:text="Thanh toán"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</layout>

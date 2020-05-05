@@ -54,7 +54,7 @@ public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setStatusBarGradiant(this);
+//        setStatusBarGradiant(this);
         mFirstStart = true;
 
         binding = DataBindingUtil.setContentView(this, getLayoutResId());

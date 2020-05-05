@@ -7,12 +7,13 @@
         android:layout_marginStart="@dimen/_dp24"
         android:layout_marginTop="@dimen/_dp8"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/_dp8"
         android:background="@drawable/bg_no_radius_top_left_white"
         android:elevation="@dimen/margin_4dp">
 
         <android.support.constraint.ConstraintLayout
+            android:padding="@dimen/_dp1"
             android:id="@+id/clCover"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -77,6 +78,7 @@
             android:textSize="@dimen/text_size12" />
 
         <TextView
+            android:layout_marginBottom="@dimen/_dp16"
             android:id="@+id/tv_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -89,13 +91,6 @@
             android:text="Thời gian chờ đợi: 15 phút"
             android:textColor="@color/black_A4A6A8"
             android:textSize="@dimen/text_size12" />
-
-        <LinearLayout
-            android:id="@+id/bg_border"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bg_no_radius_top_left_stroke"
-            android:orientation="horizontal" />
 
     </RelativeLayout>
 </layout>

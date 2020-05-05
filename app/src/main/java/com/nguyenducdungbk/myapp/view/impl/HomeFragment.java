@@ -75,6 +75,9 @@ public final class HomeFragment extends BaseFragment<HomePresenter, HomeView, Fr
 
     @Override
     public void initView() {
+        if (getActivity() != null) {
+            ((MainActivity) getActivity()).showIconOrder();
+        }
         addListFragment();
         binding.clHome.setOnClickListener(v -> openTab(POSITION_TAB_HOME, false));
         binding.clFood.setOnClickListener(v -> openTab(POSITION_TAB_FOOD, false));

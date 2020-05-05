@@ -17,7 +17,7 @@
                 android:id="@+id/cl_user"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
-                android:background="@color/red_b8403c">
+                android:background="@color/color_red_EF5050">
 
                 <TextView
                     android:id="@+id/tv_name_user"
@@ -97,7 +97,7 @@
                     android:src="@drawable/ic_search_gray"
                     tools:ignore="ContentDescription" />
 
-                <EditText
+                <TextView
                     android:hint="Tìm kiếm món ăn"
                     android:id="@+id/edt_search"
                     android:layout_width="match_parent"

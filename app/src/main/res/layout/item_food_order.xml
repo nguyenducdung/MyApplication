@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_number"
+            android:layout_width="@dimen/_dp32"
+            android:layout_height="@dimen/_dp32"
+            android:layout_marginStart="@dimen/_dp24"
+            android:layout_marginTop="@dimen/_dp12"
+            android:background="@drawable/bg_radius_stroke_8dp"
+            android:fontFamily="@font/lato_bold"
+            android:gravity="center"
+            android:text="1x"
+            android:textColor="@color/black_3A454D"
+            android:textSize="@dimen/text_size14"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_name_food"
+            android:layout_width="@dimen/_dp0"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_dp12"
+            android:layout_marginEnd="@dimen/_dp6"
+            android:ellipsize="end"
+            android:fontFamily="@font/lato_bold"
+            android:lines="2"
+            android:maxLines="2"
+            android:text="Sườn xào chua ngọt"
+            android:textColor="@color/black_3A454D"
+            android:textSize="@dimen/text_size16"
+            app:layout_constraintEnd_toStartOf="@id/tv_price"
+            app:layout_constraintStart_toEndOf="@id/tv_number"
+            app:layout_constraintTop_toTopOf="@id/tv_number" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_dp24"
+            android:fontFamily="@font/lato_regular"
+            android:text="20.000"
+            android:textColor="@color/black_3A454D"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_number" />
+
+        <TextView
+            android:id="@+id/tv_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_bold"
+            android:paddingTop="@dimen/_dp4"
+            android:paddingBottom="@dimen/_dp4"
+            android:text="Chỉnh sửa"
+            android:textColor="@color/blue_2F94E5"
+            android:textSize="@dimen/text_size12"
+            app:layout_constraintStart_toStartOf="@id/tv_name_food"
+            app:layout_constraintTop_toBottomOf="@id/tv_name_food" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginStart="@dimen/_dp24"
+            android:layout_marginTop="@dimen/_dp8"
+            android:layout_marginEnd="@dimen/_dp24"
+            android:background="#BDBDBD"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_edit" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

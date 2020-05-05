@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_marginTop="@dimen/_dp8"
+        android:layout_marginBottom="@dimen/_dp8"
+        android:background="#40BDBDBD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="@dimen/_dp48"
+            android:layout_height="@dimen/_dp48"
+            android:layout_marginStart="@dimen/_dp20"
+            android:layout_marginTop="@dimen/text_size12"
+            android:src="@mipmap/ic_launcher_round"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="@dimen/_dp0"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_dp8"
+            android:layout_marginEnd="@dimen/_dp24"
+            android:ellipsize="end"
+            android:fontFamily="@font/lato_bold"
+            android:lines="2"
+            android:maxLines="2"
+            android:text="Thực đơn yêu thích "
+            android:textColor="@color/black_3A454D"
+            android:textSize="@dimen/text_size16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_avatar"
+            app:layout_constraintTop_toTopOf="@id/iv_avatar" />
+
+        <TextView
+            android:id="@+id/tv_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_bold"
+            android:paddingTop="@dimen/_dp4"
+            android:paddingBottom="@dimen/_dp4"
+            android:text="Đặt lại"
+            android:textColor="@color/blue_2F94E5"
+            android:textSize="@dimen/text_size12"
+            app:layout_constraintStart_toStartOf="@id/tv_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

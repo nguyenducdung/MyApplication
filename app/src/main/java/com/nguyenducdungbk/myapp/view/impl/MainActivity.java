@@ -1,6 +1,9 @@
 package com.nguyenducdungbk.myapp.view.impl;
 
+import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 import com.nguyenducdungbk.myapp.MyApp;
 import com.nguyenducdungbk.myapp.R;
@@ -61,7 +64,29 @@ public final class MainActivity extends BaseActivity<MainPresenter, MainView, Ac
 
     @Override
     public void initView() {
-        super.initView();
+        getViewController().setOnFragmentChangedListener(() -> {
+            if (getViewController().getCurrentFragment() instanceof HomeFragment) {
+                new Handler().postDelayed(() -> {
+                    if (((RelativeLayout) findViewById(R.id.rl_orderfood)) == null) {
+                        return;
+                    }
+                    ((RelativeLayout) findViewById(R.id.rl_orderfood)).setVisibility(View.VISIBLE);
+                }, 300);
+            }
+        });
+        ((RelativeLayout) findViewById(R.id.rl_orderfood)).setOnClickListener(v -> {
+            getViewController().addFragment(FoodOrderFragment.class, null);
+        });
         getViewController().addFragment(LoginFragment.class, null);
+    }
+
+    @Override
+    public void showIconOrder() {
+        ((RelativeLayout) findViewById(R.id.rl_orderfood)).setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideIconOrder() {
+        ((RelativeLayout) findViewById(R.id.rl_orderfood)).setVisibility(View.GONE);
     }
 }

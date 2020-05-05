@@ -4,55 +4,59 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 
 import com.nguyenducdungbk.myapp.R;
-import com.nguyenducdungbk.myapp.adapter.FoodStatusAdapter;
-import com.nguyenducdungbk.myapp.databinding.FragmentFoodStatusBinding;
+import com.nguyenducdungbk.myapp.adapter.FoodOrderAdapter;
+import com.nguyenducdungbk.myapp.databinding.FragmentFoodOrderBinding;
 import com.nguyenducdungbk.myapp.injection.AppComponent;
-import com.nguyenducdungbk.myapp.injection.DaggerFoodStatusViewComponent;
-import com.nguyenducdungbk.myapp.injection.FoodStatusViewModule;
-import com.nguyenducdungbk.myapp.presenter.FoodStatusPresenter;
+import com.nguyenducdungbk.myapp.injection.DaggerFoodOrderViewComponent;
+import com.nguyenducdungbk.myapp.injection.FoodOrderViewModule;
+import com.nguyenducdungbk.myapp.presenter.FoodOrderPresenter;
 import com.nguyenducdungbk.myapp.presenter.loader.PresenterFactory;
-import com.nguyenducdungbk.myapp.view.FoodStatusView;
+import com.nguyenducdungbk.myapp.view.FoodOrderView;
 
 import javax.inject.Inject;
 
-public final class FoodStatusFragment extends BaseFragment<FoodStatusPresenter, FoodStatusView, FragmentFoodStatusBinding> implements FoodStatusView {
+public final class FoodOrderFragment extends BaseFragment<FoodOrderPresenter, FoodOrderView, FragmentFoodOrderBinding> implements FoodOrderView {
     @Inject
-    PresenterFactory<FoodStatusPresenter> mPresenterFactory;
+    PresenterFactory<FoodOrderPresenter> mPresenterFactory;
 
     // Your presenter is available using the mPresenter variable
 
-    public FoodStatusFragment() {
+    public FoodOrderFragment() {
         // Required empty public constructor
     }
 
     @Override
     protected void setupComponent(@NonNull AppComponent parentComponent) {
-        DaggerFoodStatusViewComponent.builder()
+        DaggerFoodOrderViewComponent.builder()
                 .appComponent(parentComponent)
-                .foodStatusViewModule(new FoodStatusViewModule())
+                .foodOrderViewModule(new FoodOrderViewModule())
                 .build()
                 .inject(this);
     }
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.fragment_food_status;
+        return R.layout.fragment_food_order;
     }
 
     @Override
     public boolean backPressed() {
+        getViewController().backFromAddFragment(null);
         return false;
     }
 
     @NonNull
     @Override
-    protected PresenterFactory<FoodStatusPresenter> getPresenterFactory() {
+    protected PresenterFactory<FoodOrderPresenter> getPresenterFactory() {
         return mPresenterFactory;
     }
 
     @Override
     public void initView() {
-        FoodStatusAdapter adapter = new FoodStatusAdapter();
+        if (getActivity() != null) {
+            ((MainActivity) getActivity()).hideIconOrder();
+        }
+        FoodOrderAdapter adapter = new FoodOrderAdapter();
         binding.rvFood.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         binding.rvFood.setAdapter(adapter);
     }

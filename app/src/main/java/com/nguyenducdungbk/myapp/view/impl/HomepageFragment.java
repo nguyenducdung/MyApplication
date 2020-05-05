@@ -59,5 +59,10 @@ public final class HomepageFragment extends BaseFragment<HomepagePresenter, Home
         binding.fcbPromotionFood.setTitle("Ưu đãi đặc biết");
         binding.fcbPromotionFood.setOnItemClickFood(view -> getViewController().addFragment(FoodListFragment.class, null));
         binding.tvDescription.setSelected(true);
+        binding.rlSearch.setOnClickListener(view -> {
+            if (!avoidDuplicateClick()) {
+                getViewController().addFragment(SearchFoodFragment.class, null);
+            }
+        });
     }
 }

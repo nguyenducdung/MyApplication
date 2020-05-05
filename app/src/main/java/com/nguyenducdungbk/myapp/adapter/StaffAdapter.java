@@ -20,7 +20,7 @@ public class StaffAdapter extends RecyclerView.Adapter<StaffAdapter.StaffViewHol
 
     @Override
     public void onBindViewHolder(@NonNull StaffViewHolder staffViewHolder, int i) {
-
+        staffViewHolder.binding.tvNameStaff.setText("Nguyễn Đức Dũng " + i);
     }
 
     @Override

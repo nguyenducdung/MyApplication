@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true">
+
+        <LinearLayout
+            android:id="@+id/llSearch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            tools:context=".view.impl.IndustrialSearchFragment">
+
+            <com.nguyenducdungbk.myapp.view.custom.RestaurantToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:gravity="center_vertical"
+                app:tvtb_visible_search="true" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_dp1"
+                android:background="#DBDBDB" />
+
+            <LinearLayout
+                android:id="@+id/llRecentSearches"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/tvRecentSearches"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_dp24"
+                    android:layout_marginBottom="@dimen/_dp5"
+                    android:fontFamily="@font/lato_regular"
+                    android:paddingStart="@dimen/_dp24"
+                    android:paddingEnd="@dimen/_dp24"
+                    android:text="Tìm kiếm gần đây"
+                    android:textColor="#A4A6A8"
+                    android:textSize="@dimen/text_size12" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rvRecentSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvSearchResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/_dp24"
+                android:paddingEnd="@dimen/_dp24"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvEmpty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/lato_regular"
+            android:gravity="center"
+            android:text="@string/no_data"
+            android:textColor="@color/black_3A454D"
+            android:textSize="@dimen/text_size14"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+</layout>

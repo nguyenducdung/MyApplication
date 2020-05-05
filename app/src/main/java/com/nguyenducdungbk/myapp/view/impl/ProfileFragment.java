@@ -25,6 +25,8 @@ import com.nguyenducdungbk.myapp.utils.UIUtil;
 import com.nguyenducdungbk.myapp.view.ProfileView;
 import com.nguyenducdungbk.myapp.view.custom.AppBarStateChangeListener;
 
+import java.util.HashMap;
+
 import javax.inject.Inject;
 
 public final class ProfileFragment extends BaseFragment<ProfilePresenter, ProfileView, FragmentProfileBinding> implements ProfileView {
@@ -93,6 +95,14 @@ public final class ProfileFragment extends BaseFragment<ProfilePresenter, Profil
         }
     };
 
+    private View.OnClickListener editProfileClickListener = v -> {
+        if (!avoidDuplicateClick()) {
+            if (getViewController() != null) {
+                getViewController().addFragment(ConfirmInfoUserFragment.class, null);
+            }
+        }
+    };
+
     // Your presenter is available using the mPresenter variable
 
     public ProfileFragment() {
@@ -137,6 +147,8 @@ public final class ProfileFragment extends BaseFragment<ProfilePresenter, Profil
         profileAdapter = new ProfileAdapter();
         binding.rvVoucher.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         binding.rvVoucher.setAdapter(profileAdapter);
+        binding.ivFavorite.setOnClickListener(editProfileClickListener);
+        binding.tvFavorite.setOnClickListener(editProfileClickListener);
     }
 
     @Override

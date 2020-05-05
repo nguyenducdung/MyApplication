@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:id="@+id/rl_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <com.nguyenducdungbk.myapp.view.custom.RestaurantToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tvtb_title="Chỉnh sửa thông tin cá nhân" />
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar"
+            android:layout_marginBottom="@dimen/_dp70"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <RelativeLayout
+                android:id="@+id/rl_background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/margin_20dp"
+                android:orientation="vertical"
+                tools:context=".view.impl.ConfirmInfoUserFragment">
+
+                <RelativeLayout
+                    android:id="@+id/layout_sns"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_dp16"
+                    android:layout_marginEnd="@dimen/_dp16"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:id="@+id/iv_user"
+                        android:layout_width="@dimen/_dp64"
+                        android:layout_height="@dimen/_dp64"
+                        android:layout_marginEnd="@dimen/_dp8"
+                        android:src="@drawable/ic_personal_yellow" />
+
+                    <TextView
+                        android:id="@+id/tv_name_sns"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_dp15"
+                        android:layout_toEndOf="@id/iv_user"
+                        android:fontFamily="@font/lato_bold"
+                        android:textColor="@color/color_grey_323B42"
+                        android:textSize="@dimen/text_size16"
+                        tools:text="Tài khoản facebook" />
+
+                    <TextView
+                        android:id="@+id/tv_account_sns"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_name_sns"
+                        android:layout_toEndOf="@id/iv_user"
+                        android:fontFamily="@font/lato_regular"
+                        android:textColor="@color/color_grey_323B42"
+                        android:textSize="@dimen/text_size14"
+                        tools:text="Tài khoản facebook" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_sub_title_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/layout_sns"
+                    android:layout_marginStart="@dimen/_dp16"
+                    android:layout_marginTop="@dimen/_dp19"
+                    android:layout_marginEnd="@dimen/_dp16"
+                    android:fontFamily="@font/lato_regular"
+                    android:includeFontPadding="false"
+                    android:text="Các thông tin cá nhân chính xác giúp chúng tôi mang lại cho bạn những thông tin thú vị chính xác theo đúng thông tin của bạn."
+                    android:textColor="@color/color_grey_323B42"
+                    android:textSize="@dimen/text_size16"
+                    android:visibility="visible" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_sub_title_edit"
+                    android:layout_marginTop="25dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginStart="@dimen/_dp16"
+                        android:fontFamily="@font/lato_regular"
+                        android:text="Họ tên đầy đủ"
+                        android:textColor="@color/color_grey_323B42"
+                        android:textSize="@dimen/text_size14" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_dp44"
+                        android:layout_marginStart="@dimen/_dp16"
+                        android:layout_marginTop="@dimen/_dp4"
+                        android:layout_marginEnd="@dimen/_dp16">
+
+                        <EditText
+                            android:id="@+id/edt_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/lato_bold"
+                            android:inputType="text"
+                            android:maxLength="50"
+                            android:maxLines="1"
+                            android:paddingStart="@dimen/_dp5"
+                            android:paddingEnd="@dimen/_dp35"
+                            android:textColor="@color/color_grey_323B42"
+                            android:textSize="@dimen/text_size16"
+                            tools:ignore="Autofill,LabelFor" />
+
+                        <ImageView
+                            android:id="@+id/img_close_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/_dp10"
+                            android:src="@drawable/ic_close_black" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginStart="@dimen/_dp16"
+                        android:layout_marginTop="@dimen/_dp19"
+                        android:fontFamily="@font/lato_regular"
+                        android:text="Số điện thoại liên hệ"
+                        android:textColor="@color/color_grey_323B42"
+                        android:textSize="@dimen/text_size14" />
+
+                    <EditText
+                        android:id="@+id/edt_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_dp16"
+                        android:layout_marginTop="@dimen/_dp4"
+                        android:layout_marginEnd="@dimen/_dp16"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/lato_bold"
+                        android:inputType="phone"
+                        android:maxLength="11"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/_dp5"
+                        android:paddingEnd="@dimen/_dp35"
+                        android:textColor="@color/color_grey_323B42"
+                        android:textSize="@dimen/text_size16"
+                        tools:ignore="Autofill,LabelFor" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginStart="@dimen/_dp16"
+                        android:layout_marginTop="@dimen/_dp19"
+                        android:layout_marginEnd="@dimen/_dp16"
+                        android:fontFamily="@font/lato_regular"
+                        android:includeFontPadding="false"
+                        android:text="Chọn giới tính của bạn"
+                        android:textColor="@color/color_grey_323B42"
+                        android:textSize="@dimen/text_size14" />
+
+                    <LinearLayout
+                        android:id="@+id/radio_gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_dp16"
+                        android:layout_marginTop="@dimen/_dp16"
+                        android:layout_marginEnd="@dimen/_dp16"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/btn_male"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:id="@+id/img_boy"
+                                android:layout_width="@dimen/_dp44"
+                                android:layout_height="@dimen/_dp44"
+                                android:background="@drawable/selector_boy" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="@dimen/_dp5"
+                                android:fontFamily="@font/lato_bold"
+                                android:text="Nam"
+                                android:textColor="@color/color_grey_323B42"
+                                android:textSize="@dimen/text_size14" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/btn_female"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/margin_16dp"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:id="@+id/img_girl"
+                                android:layout_width="@dimen/_dp44"
+                                android:layout_height="@dimen/_dp44"
+                                android:background="@drawable/selector_girl" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="@dimen/_dp5"
+                                android:fontFamily="@font/lato_bold"
+                                android:text="Nữ"
+                                android:textColor="@color/color_grey_323B42"
+                                android:textSize="@dimen/text_size14" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginStart="@dimen/_dp16"
+                        android:layout_marginTop="@dimen/_dp12"
+                        android:layout_marginEnd="@dimen/_dp16"
+                        android:fontFamily="@font/lato_regular"
+                        android:includeFontPadding="false"
+                        android:text="Ngày tháng năm sinh"
+                        android:textColor="@color/color_grey_323B42"
+                        android:textSize="@dimen/text_size14" />
+
+                    <RelativeLayout
+                        android:id="@+id/btn_birthday"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_dp44"
+                        android:layout_marginStart="@dimen/_dp16"
+                        android:layout_marginTop="@dimen/_dp4"
+                        android:layout_marginEnd="@dimen/_dp16">
+
+                        <TextView
+                            android:id="@+id/tv_birthday"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="@dimen/_dp5"
+                            android:fontFamily="@font/lato_bold"
+                            android:gravity="center_vertical"
+                            android:text="dd/mm/yyyy"
+                            android:textColor="@color/color_grey_323B42"
+                            android:textSize="@dimen/text_size16" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/_dp10"
+                            android:src="@drawable/icon_calendar_info"
+                            android:tint="@color/color_red_EF5050"
+                            tools:ignore="ContentDescription" />
+
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_dp1"
+                        android:layout_marginStart="@dimen/_dp16"
+                        android:layout_marginEnd="@dimen/_dp16"
+                        android:background="#DDDDDD" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+        <LinearLayout
+            android:id="@+id/ll_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/_dp12"
+            android:paddingBottom="@dimen/_dp12"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/btn_account_edit_disconnect"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginEnd="@dimen/margin_6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_white_border_gray_1dp_radius_8dp"
+                android:fontFamily="@font/lato_bold"
+                android:gravity="center_horizontal"
+                android:lineSpacingMultiplier="1.25"
+                android:paddingTop="@dimen/_dp14"
+                android:paddingBottom="@dimen/_dp14"
+                android:text="Huỷ bỏ"
+                android:textAllCaps="false"
+                android:textColor="@color/color_red_EF5050"
+                android:textSize="@dimen/text_size16" />
+
+            <Button
+                android:id="@+id/btn_connect_edit_complete"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_6dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_button_highlight_radius_8dp"
+                android:fontFamily="@font/lato_bold"
+                android:lineSpacingMultiplier="1.25"
+                android:text="Lưu"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size16" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

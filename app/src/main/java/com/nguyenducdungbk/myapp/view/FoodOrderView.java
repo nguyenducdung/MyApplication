@@ -3,8 +3,6 @@ package com.nguyenducdungbk.myapp.view;
 import android.support.annotation.UiThread;
 
 @UiThread
-public interface MainView extends BaseView{
-    void showIconOrder();
+public interface FoodOrderView extends BaseView {
 
-    void hideIconOrder();
 }
