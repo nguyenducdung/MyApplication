@@ -2,6 +2,7 @@ package com.nguyenducdungbk.myapp.injection;
 
 import android.support.annotation.NonNull;
 
+import com.nguyenducdungbk.myapp.data.RestaurantData;
 import com.nguyenducdungbk.myapp.interactor.LoginInteractor;
 import com.nguyenducdungbk.myapp.interactor.impl.LoginInteractorImpl;
 import com.nguyenducdungbk.myapp.network.request.Apis;
@@ -16,8 +17,8 @@ import dagger.Provides;
 @Module
 public final class LoginViewModule {
     @Provides
-    public LoginInteractor provideInteractor(Apis apis, RxSchedulers rxSchedulers) {
-        return new LoginInteractorImpl(apis, rxSchedulers);
+    public LoginInteractor provideInteractor(Apis apis, RxSchedulers rxSchedulers, RestaurantData realmManager) {
+        return new LoginInteractorImpl(apis, rxSchedulers, realmManager);
     }
 
     @Provides

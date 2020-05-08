@@ -27,6 +27,11 @@ public final class ProfilePresenterImpl extends BasePresenterImpl<ProfileView> i
         super.onStart(viewCreated);
 
         // Your code here. Your view is available using mView and will not be null until next onStop()
+        if (viewCreated && mView != null) {
+            if (mInteractor.getUser() != null) {
+                mView.updateUser(mInteractor.getUser().getName());
+            }
+        }
     }
 
     @Override

@@ -274,4 +274,9 @@ public final class ProfileFragment extends BaseFragment<ProfilePresenter, Profil
         float alpla = visibility == View.VISIBLE ? 1f : 0f;
         v.animate().alpha(alpla).setDuration(ANIMATION_DURATION).start();
     }
+
+    @Override
+    public void updateUser(String name) {
+        binding.tvTitle.setText(name);
+    }
 }

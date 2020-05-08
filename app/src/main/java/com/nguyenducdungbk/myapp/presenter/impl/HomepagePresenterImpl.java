@@ -27,6 +27,11 @@ public final class HomepagePresenterImpl extends BasePresenterImpl<HomepageView>
         super.onStart(viewCreated);
 
         // Your code here. Your view is available using mView and will not be null until next onStop()
+        if (viewCreated && mView != null) {
+            if (mInteractor.getUser() != null) {
+                mView.updateUserName(mInteractor.getUser().getName());
+            }
+        }
     }
 
     @Override

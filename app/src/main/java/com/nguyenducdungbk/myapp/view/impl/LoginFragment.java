@@ -1,13 +1,9 @@
 package com.nguyenducdungbk.myapp.view.impl;
 
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.nguyenducdungbk.myapp.R;
 import com.nguyenducdungbk.myapp.databinding.FragmentLoginBinding;
 import com.nguyenducdungbk.myapp.injection.AppComponent;
@@ -75,16 +71,15 @@ public final class LoginFragment extends BaseFragment<LoginPresenter, LoginView,
                 showErrorDialog(R.string.phone_valid);
                 return;
             }
-            showLoading();
-            FirebaseAuth.getInstance().createUserWithEmailAndPassword(StringUtil.createEmail(binding.etName.getText().toString().trim()), binding.etPhone.getText().toString().trim())
-                    .addOnCompleteListener(getActivity(), task -> {
-                        Toast.makeText(getContext(), getString(R.string.login_success), Toast.LENGTH_SHORT).show();
-                        Bundle bundle = new Bundle();
-                        bundle.putString(HomeFragment.NAME_USER, binding.etName.getText().toString().trim());
-                        bundle.putString(HomeFragment.PHONE_USER, binding.etPhone.getText().toString().trim());
-                        hiddenLoading();
-                        getViewController().addFragment(HomeFragment.class, bundle);
-                    });
+            if (mPresenter != null) {
+                mPresenter.login(binding.etName.getText().toString().trim(), binding.etPhone.getText().toString().trim());
+            }
         });
+    }
+
+    @Override
+    public void loginSuccess() {
+        Toast.makeText(getContext(), getString(R.string.login_success), Toast.LENGTH_SHORT).show();
+        getViewController().addFragment(HomeFragment.class, null);
     }
 }

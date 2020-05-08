@@ -5,13 +5,17 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
-public class UserResponse implements Parcelable {
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
+public class UserResponse extends RealmObject implements Parcelable {
+    @PrimaryKey
+    private int idRealm = 1;
     @SerializedName("name")
     private String name;
     @SerializedName("gender")
     private String gender;
-    @SerializedName("date_of_birth")
+    @SerializedName("dateOfBirth")
     private String dateOfBirth;
     @SerializedName("phone")
     private String phone;
@@ -24,6 +28,8 @@ public class UserResponse implements Parcelable {
     public UserResponse(String name, String phone) {
         this.name = name;
         this.phone = phone;
+        this.gender = "";
+        this.dateOfBirth = "";
     }
 
     protected UserResponse(Parcel in) {

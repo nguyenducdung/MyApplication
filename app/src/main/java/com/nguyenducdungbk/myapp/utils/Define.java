@@ -2,6 +2,7 @@ package com.nguyenducdungbk.myapp.utils;
 
 public class Define {
     public static final long CLICK_TIME_INTERVAL = 300L;
+    public static final String REALM_NAME = "restaurant.realm";
 
     public static class Bus {
         public static final String OPEN_NOTIFICATION = "OPEN_NOTIFICATION";

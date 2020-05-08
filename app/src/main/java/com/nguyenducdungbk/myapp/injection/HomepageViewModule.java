@@ -2,6 +2,7 @@ package com.nguyenducdungbk.myapp.injection;
 
 import android.support.annotation.NonNull;
 
+import com.nguyenducdungbk.myapp.data.RestaurantData;
 import com.nguyenducdungbk.myapp.interactor.HomepageInteractor;
 import com.nguyenducdungbk.myapp.interactor.impl.HomepageInteractorImpl;
 import com.nguyenducdungbk.myapp.presenter.HomepagePresenter;
@@ -14,8 +15,8 @@ import dagger.Provides;
 @Module
 public final class HomepageViewModule {
     @Provides
-    public HomepageInteractor provideInteractor() {
-        return new HomepageInteractorImpl();
+    public HomepageInteractor provideInteractor(RestaurantData restaurantData) {
+        return new HomepageInteractorImpl(restaurantData);
     }
 
     @Provides

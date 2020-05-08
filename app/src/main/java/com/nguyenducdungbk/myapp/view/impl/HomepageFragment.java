@@ -1,5 +1,6 @@
 package com.nguyenducdungbk.myapp.view.impl;
 
+import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
 
 import com.nguyenducdungbk.myapp.R;
@@ -64,5 +65,11 @@ public final class HomepageFragment extends BaseFragment<HomepagePresenter, Home
                 getViewController().addFragment(SearchFoodFragment.class, null);
             }
         });
+    }
+
+    @SuppressLint("SetTextI18n")
+    @Override
+    public void updateUserName(String name) {
+        binding.tvNameUser.setText("Xin chào, " + name);
     }
 }

@@ -2,9 +2,13 @@ package com.nguyenducdungbk.myapp.presenter.impl;
 
 import android.support.annotation.NonNull;
 
+import com.google.firebase.database.FirebaseDatabase;
 import com.nguyenducdungbk.myapp.interactor.LoginInteractor;
+import com.nguyenducdungbk.myapp.network.response.UserResponse;
 import com.nguyenducdungbk.myapp.presenter.LoginPresenter;
 import com.nguyenducdungbk.myapp.view.LoginView;
+
+import java.util.LinkedHashMap;
 
 import javax.inject.Inject;
 
@@ -14,6 +18,7 @@ public final class LoginPresenterImpl extends BasePresenterImpl<LoginView> imple
      */
     @NonNull
     private final LoginInteractor mInteractor;
+    private LinkedHashMap<String, UserResponse> userList;
 
     // The view is available using the mView variable
 
@@ -28,6 +33,7 @@ public final class LoginPresenterImpl extends BasePresenterImpl<LoginView> imple
 
         // Your code here. Your view is available using mView and will not be null until next onStop()
         if (viewCreated) {
+            mInteractor.deleteUser();
             getListUser();
         }
     }
@@ -46,7 +52,7 @@ public final class LoginPresenterImpl extends BasePresenterImpl<LoginView> imple
                 })
                 .subscribe(response -> {
                     if (response != null && mView != null) {
-                        response.getUserList();
+                        this.userList = response.getUserList();
                     }
                 }, Throwable::printStackTrace));
     }
@@ -66,5 +72,23 @@ public final class LoginPresenterImpl extends BasePresenterImpl<LoginView> imple
          */
 
         super.onPresenterDestroyed();
+    }
+
+    @Override
+    public void login(String name, String phone) {
+        if (mView == null) {
+            return;
+        }
+        UserResponse userResponse = userList.get(phone);
+        if (userResponse != null) {
+            userResponse.setName(name);
+            mInteractor.saveUser(userResponse);
+            mView.loginSuccess();
+        } else {
+            UserResponse userResponseNew = new UserResponse(name, phone);
+            FirebaseDatabase.getInstance().getReference().child("list_user").child("users").child(phone).setValue(userResponseNew);
+            mInteractor.saveUser(userResponseNew);
+            mView.loginSuccess();
+        }
     }
 }

@@ -2,6 +2,7 @@ package com.nguyenducdungbk.myapp.injection;
 
 import android.support.annotation.NonNull;
 
+import com.nguyenducdungbk.myapp.data.RestaurantData;
 import com.nguyenducdungbk.myapp.interactor.ProfileInteractor;
 import com.nguyenducdungbk.myapp.interactor.impl.ProfileInteractorImpl;
 import com.nguyenducdungbk.myapp.presenter.ProfilePresenter;
@@ -14,8 +15,8 @@ import dagger.Provides;
 @Module
 public final class ProfileViewModule {
     @Provides
-    public ProfileInteractor provideInteractor() {
-        return new ProfileInteractorImpl();
+    public ProfileInteractor provideInteractor(RestaurantData restaurantData) {
+        return new ProfileInteractorImpl(restaurantData);
     }
 
     @Provides

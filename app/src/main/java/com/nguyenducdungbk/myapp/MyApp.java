@@ -9,6 +9,10 @@ import com.facebook.stetho.Stetho;
 import com.nguyenducdungbk.myapp.injection.AppComponent;
 import com.nguyenducdungbk.myapp.injection.AppModule;
 import com.nguyenducdungbk.myapp.injection.DaggerAppComponent;
+import com.nguyenducdungbk.myapp.utils.Define;
+
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
 
 /**
  * Created by DungND on 8/14/2019.
@@ -27,6 +31,14 @@ public final class MyApp extends Application {
                 .build();
 
         context = mAppComponent.getAppContext();
+
+        Realm.init(context);
+        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder()
+                .name(Define.REALM_NAME)
+                .schemaVersion(1)
+                .deleteRealmIfMigrationNeeded()
+                .build();
+        Realm.setDefaultConfiguration(realmConfiguration);
 
         // Debug tool
         Stetho.initializeWithDefaults(this);
