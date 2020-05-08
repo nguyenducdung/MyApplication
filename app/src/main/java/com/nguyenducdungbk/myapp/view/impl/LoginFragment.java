@@ -72,6 +72,7 @@ public final class LoginFragment extends BaseFragment<LoginPresenter, LoginView,
                 return;
             }
             showLoading();
+            binding.btnLogin.setEnabled(false);
             if (mPresenter != null) {
                 mPresenter.login(binding.etName.getText().toString().trim(), binding.etPhone.getText().toString().trim());
             }
