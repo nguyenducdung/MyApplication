@@ -21,7 +21,7 @@ public class RxBus {
         sPublishSubject.onNext(event);
     }
 
-    public Disposable subscribe(Consumer<String> sub) {
+    public Disposable subscribe(Consumer<Object> sub) {
         return sPublishSubject.subscribe(sub);
     }
 

@@ -13,6 +13,7 @@ import com.nguyenducdungbk.myapp.presenter.loader.PresenterFactory;
 import com.nguyenducdungbk.myapp.utils.Define;
 import com.nguyenducdungbk.myapp.view.ConfirmInfoUserView;
 import com.nguyenducdungbk.myapp.view.custom.DateInputMask;
+import com.nguyenducdungbk.myapp.view.dialog.MyDialog;
 
 import javax.inject.Inject;
 
@@ -87,6 +88,7 @@ public final class ConfirmInfoUserFragment extends BaseFragment<ConfirmInfoUserP
 
     @Override
     public void updateUser(UserResponse user) {
+        binding.tvNameSns.setText(user.getName());
         binding.edtName.setText(user.getName());
         binding.edtPhone.setText(user.getPhone());
         binding.etBirthday.setText(user.getDateOfBirth());
@@ -118,5 +120,13 @@ public final class ConfirmInfoUserFragment extends BaseFragment<ConfirmInfoUserP
     @Override
     public String getDate() {
         return binding.etBirthday.getText().toString().trim();
+    }
+
+    @Override
+    public void showUpdateSuccess() {
+        new MyDialog(getContext())
+                .setMessage(getString(R.string.cap_nhat_thanh_cong))
+                .setPositiveButton(R.string.ok, this::backPressed)
+                .show();
     }
 }

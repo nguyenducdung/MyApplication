@@ -17,4 +17,5 @@ public interface ConfirmInfoUserView extends BaseView {
 
     String getDate();
 
+    void showUpdateSuccess();
 }

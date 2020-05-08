@@ -4,9 +4,13 @@ import android.support.annotation.NonNull;
 
 import com.nguyenducdungbk.myapp.interactor.ProfileInteractor;
 import com.nguyenducdungbk.myapp.presenter.ProfilePresenter;
+import com.nguyenducdungbk.myapp.utils.Define;
+import com.nguyenducdungbk.myapp.utils.rx.RxBus;
 import com.nguyenducdungbk.myapp.view.ProfileView;
 
 import javax.inject.Inject;
+
+import io.reactivex.functions.Consumer;
 
 public final class ProfilePresenterImpl extends BasePresenterImpl<ProfileView> implements ProfilePresenter {
     /**
@@ -14,6 +18,7 @@ public final class ProfilePresenterImpl extends BasePresenterImpl<ProfileView> i
      */
     @NonNull
     private final ProfileInteractor mInteractor;
+    Consumer<Object> editUser = null;
 
     // The view is available using the mView variable
 
@@ -28,9 +33,18 @@ public final class ProfilePresenterImpl extends BasePresenterImpl<ProfileView> i
 
         // Your code here. Your view is available using mView and will not be null until next onStop()
         if (viewCreated && mView != null) {
+            editUser = value -> {
+                if (!(value instanceof String) || mView == null)
+                    return;
+                if (value.equals(Define.Bus.EDIT_USER) && mInteractor.getUser() != null) {
+                    mView.updateUser(mInteractor.getUser().getName());
+                }
+            };
+
             if (mInteractor.getUser() != null) {
                 mView.updateUser(mInteractor.getUser().getName());
             }
+            compositeDisposable.add(RxBus.getInstance().subscribe(editUser));
         }
     }
 

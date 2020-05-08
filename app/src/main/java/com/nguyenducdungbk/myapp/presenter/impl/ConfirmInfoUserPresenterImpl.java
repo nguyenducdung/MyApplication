@@ -7,7 +7,9 @@ import com.nguyenducdungbk.myapp.R;
 import com.nguyenducdungbk.myapp.interactor.ConfirmInfoUserInteractor;
 import com.nguyenducdungbk.myapp.network.response.UserResponse;
 import com.nguyenducdungbk.myapp.presenter.ConfirmInfoUserPresenter;
+import com.nguyenducdungbk.myapp.utils.Define;
 import com.nguyenducdungbk.myapp.utils.StringUtil;
+import com.nguyenducdungbk.myapp.utils.rx.RxBus;
 import com.nguyenducdungbk.myapp.view.ConfirmInfoUserView;
 
 import javax.inject.Inject;
@@ -61,11 +63,11 @@ public final class ConfirmInfoUserPresenterImpl extends BasePresenterImpl<Confir
             return;
         }
 
-        if (!TextUtils.isEmpty(mView.getName())) {
+        if (TextUtils.isEmpty(mView.getName())) {
             mView.showErrorDialog(R.string.vui_long_nhap_ho_ten);
             return;
         }
-        if (!TextUtils.isEmpty(mView.getPhone())) {
+        if (TextUtils.isEmpty(mView.getPhone())) {
             mView.showErrorDialog(R.string.vui_long_nhap_so_dien_thoai);
             return;
         }
@@ -73,11 +75,11 @@ public final class ConfirmInfoUserPresenterImpl extends BasePresenterImpl<Confir
             mView.showErrorDialog(R.string.phone_valid);
             return;
         }
-        if (!TextUtils.isEmpty(mView.getGender())) {
+        if (TextUtils.isEmpty(mView.getGender())) {
             mView.showErrorDialog(R.string.vui_long_nhap_gioitinh);
             return;
         }
-        if (!TextUtils.isEmpty(mView.getDate())) {
+        if (TextUtils.isEmpty(mView.getDate())) {
             mView.showErrorDialog(R.string.vui_long_nhap_date);
             return;
         }
@@ -88,5 +90,7 @@ public final class ConfirmInfoUserPresenterImpl extends BasePresenterImpl<Confir
         userResponse.setGender(mView.getGender());
         userResponse.setDateOfBirth(mView.getDate());
         mInteractor.saveUser(userResponse);
+        mView.showUpdateSuccess();
+        RxBus.getInstance().publish(Define.Bus.EDIT_USER);
     }
 }

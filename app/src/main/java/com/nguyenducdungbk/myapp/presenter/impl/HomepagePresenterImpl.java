@@ -4,9 +4,13 @@ import android.support.annotation.NonNull;
 
 import com.nguyenducdungbk.myapp.interactor.HomepageInteractor;
 import com.nguyenducdungbk.myapp.presenter.HomepagePresenter;
+import com.nguyenducdungbk.myapp.utils.Define;
+import com.nguyenducdungbk.myapp.utils.rx.RxBus;
 import com.nguyenducdungbk.myapp.view.HomepageView;
 
 import javax.inject.Inject;
+
+import io.reactivex.functions.Consumer;
 
 public final class HomepagePresenterImpl extends BasePresenterImpl<HomepageView> implements HomepagePresenter {
     /**
@@ -14,6 +18,7 @@ public final class HomepagePresenterImpl extends BasePresenterImpl<HomepageView>
      */
     @NonNull
     private final HomepageInteractor mInteractor;
+    Consumer<Object> editUser = null;
 
     // The view is available using the mView variable
 
@@ -28,9 +33,18 @@ public final class HomepagePresenterImpl extends BasePresenterImpl<HomepageView>
 
         // Your code here. Your view is available using mView and will not be null until next onStop()
         if (viewCreated && mView != null) {
+            editUser = value -> {
+                if (!(value instanceof String) || mView == null)
+                    return;
+                if (value.equals(Define.Bus.EDIT_USER) && mInteractor.getUser() != null) {
+                    mView.updateUserName(mInteractor.getUser().getName());
+                }
+            };
+
             if (mInteractor.getUser() != null) {
                 mView.updateUserName(mInteractor.getUser().getName());
             }
+            compositeDisposable.add(RxBus.getInstance().subscribe(editUser));
         }
     }
 

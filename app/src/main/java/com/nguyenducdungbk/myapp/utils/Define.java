@@ -9,6 +9,7 @@ public class Define {
     public static class Bus {
         public static final String OPEN_NOTIFICATION = "OPEN_NOTIFICATION";
         public static final String SHOW_SEARCH_RESULT = "SHOW_SEARCH_RESULT";
+        public static final String EDIT_USER = "EDIT_USER";
     }
 
     public static class Shortcut {
