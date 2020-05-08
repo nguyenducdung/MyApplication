@@ -7,6 +7,8 @@
     <string name="dang_nhap">Đăng nhập</string>
     <string name="vui_long_nhap_ho_ten">Vui lòng nhập đầy đủ họ tên</string>
     <string name="vui_long_nhap_so_dien_thoai">Vui lòng nhập đầy đủ số điện thoại</string>
+    <string name="vui_long_nhap_gioitinh">Vui lòng nhập giới tính</string>
+    <string name="vui_long_nhap_date">Vui lòng nhập ngày tháng năm sinh</string>
     <string name="phone_valid">Số điện thoại của bạn không đúng định dạng!</string>
     <string name="login_success">Đăng nhập thành công!</string>
     <string name="trang_chu">Trang chủ</string>
@@ -18,4 +20,5 @@
     <string name="danh_sach_nhan_vien">Danh sách nhân viên</string>
     <string name="staff_description">Nếu có bất kì thắc mắc hoặc khiếu nại gì đến nhà hàng, nhân viên,... Quý khách vui lòng liên hệ trực tiếp đến quản lý phụ trách cửa hàng!</string>
     <string name="no_data">Không có nội dung tương ứng</string>
+    <string name="confirm_info_user_date_birth">dd/mm/yyyy</string>
 </resources>

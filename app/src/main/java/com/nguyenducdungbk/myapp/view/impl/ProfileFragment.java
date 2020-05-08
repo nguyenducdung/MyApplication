@@ -103,6 +103,13 @@ public final class ProfileFragment extends BaseFragment<ProfilePresenter, Profil
         }
     };
 
+    private View.OnClickListener favoriteClickListener = v -> {
+        if (!avoidDuplicateClick()) {
+            getViewController().addFragment(LoginFragment.class, null);
+
+        }
+    };
+
     // Your presenter is available using the mPresenter variable
 
     public ProfileFragment() {
@@ -149,6 +156,9 @@ public final class ProfileFragment extends BaseFragment<ProfilePresenter, Profil
         binding.rvVoucher.setAdapter(profileAdapter);
         binding.ivFavorite.setOnClickListener(editProfileClickListener);
         binding.tvFavorite.setOnClickListener(editProfileClickListener);
+        binding.ivSetting.setOnClickListener(favoriteClickListener);
+        binding.tvSetting.setOnClickListener(favoriteClickListener);
+        binding.llEdit.setOnClickListener(favoriteClickListener);
     }
 
     @Override

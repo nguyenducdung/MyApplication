@@ -71,6 +71,7 @@ public final class LoginFragment extends BaseFragment<LoginPresenter, LoginView,
                 showErrorDialog(R.string.phone_valid);
                 return;
             }
+            showLoading();
             if (mPresenter != null) {
                 mPresenter.login(binding.etName.getText().toString().trim(), binding.etPhone.getText().toString().trim());
             }
@@ -79,6 +80,7 @@ public final class LoginFragment extends BaseFragment<LoginPresenter, LoginView,
 
     @Override
     public void loginSuccess() {
+        hiddenLoading();
         Toast.makeText(getContext(), getString(R.string.login_success), Toast.LENGTH_SHORT).show();
         getViewController().addFragment(HomeFragment.class, null);
     }

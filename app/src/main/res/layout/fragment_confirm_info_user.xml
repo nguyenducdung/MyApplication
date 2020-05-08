@@ -255,6 +255,7 @@
                         android:layout_marginEnd="@dimen/_dp16">
 
                         <TextView
+                            android:visibility="gone"
                             android:id="@+id/tv_birthday"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -262,18 +263,34 @@
                             android:layout_marginStart="@dimen/_dp5"
                             android:fontFamily="@font/lato_bold"
                             android:gravity="center_vertical"
-                            android:text="dd/mm/yyyy"
+                            android:text="@string/confirm_info_user_date_birth"
                             android:textColor="@color/color_grey_323B42"
                             android:textSize="@dimen/text_size16" />
 
+                        <EditText
+                            android:id="@+id/et_birthday"
+                            android:inputType="date"
+                            android:paddingStart="@dimen/_dp5"
+                            android:paddingEnd="@dimen/_dp16"
+                            android:fontFamily="@font/lato_bold"
+                            android:gravity="center_vertical"
+                            android:text="@string/confirm_info_user_date_birth"
+                            android:textColor="@color/color_grey_323B42"
+                            android:textSize="@dimen/text_size16"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_dp44"
+                            tools:ignore="Autofill" />
+
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:visibility="gone"
+                            android:id="@+id/iv_birthday"
+                            android:layout_width="@dimen/_dp40"
+                            android:layout_height="@dimen/_dp40"
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
-                            android:layout_marginEnd="@dimen/_dp10"
+                            android:layout_marginEnd="@dimen/_dp2"
+                            android:padding="@dimen/_dp10"
                             android:src="@drawable/icon_calendar_info"
-                            android:tint="@color/color_red_EF5050"
                             tools:ignore="ContentDescription" />
 
                     </RelativeLayout>

@@ -7,15 +7,19 @@ import com.nguyenducdungbk.myapp.databinding.FragmentConfirmInfoUserBinding;
 import com.nguyenducdungbk.myapp.injection.AppComponent;
 import com.nguyenducdungbk.myapp.injection.ConfirmInfoUserViewModule;
 import com.nguyenducdungbk.myapp.injection.DaggerConfirmInfoUserViewComponent;
+import com.nguyenducdungbk.myapp.network.response.UserResponse;
 import com.nguyenducdungbk.myapp.presenter.ConfirmInfoUserPresenter;
 import com.nguyenducdungbk.myapp.presenter.loader.PresenterFactory;
+import com.nguyenducdungbk.myapp.utils.Define;
 import com.nguyenducdungbk.myapp.view.ConfirmInfoUserView;
+import com.nguyenducdungbk.myapp.view.custom.DateInputMask;
 
 import javax.inject.Inject;
 
 public final class ConfirmInfoUserFragment extends BaseFragment<ConfirmInfoUserPresenter, ConfirmInfoUserView, FragmentConfirmInfoUserBinding> implements ConfirmInfoUserView {
     @Inject
     PresenterFactory<ConfirmInfoUserPresenter> mPresenterFactory;
+    private String gender = "";
 
     // Your presenter is available using the mPresenter variable
 
@@ -54,5 +58,65 @@ public final class ConfirmInfoUserFragment extends BaseFragment<ConfirmInfoUserP
         if (getActivity() != null) {
             ((MainActivity) getActivity()).hideIconOrder();
         }
+        binding.btnAccountEditDisconnect.setOnClickListener(v -> backPressed());
+        new DateInputMask(binding.etBirthday);
+        binding.etBirthday.setSelection(0);
+        binding.btnMale.setOnClickListener(v -> {
+            if (avoidDuplicateClick()) {
+                return;
+            }
+            gender = Define.GENDER_NAM;
+            binding.btnMale.setSelected(true);
+            binding.btnFemale.setSelected(false);
+        });
+        binding.btnFemale.setOnClickListener(v -> {
+            if (avoidDuplicateClick()) {
+                return;
+            }
+            gender = Define.GENDER_NU;
+            binding.btnMale.setSelected(false);
+            binding.btnFemale.setSelected(true);
+        });
+
+        binding.btnConnectEditComplete.setOnClickListener(view -> {
+            if (!avoidDuplicateClick() && mPresenter != null) {
+                mPresenter.saveUser();
+            }
+        });
+    }
+
+    @Override
+    public void updateUser(UserResponse user) {
+        binding.edtName.setText(user.getName());
+        binding.edtPhone.setText(user.getPhone());
+        binding.etBirthday.setText(user.getDateOfBirth());
+        gender = user.getGender();
+        if (user.getGender().equalsIgnoreCase(Define.GENDER_NAM)) {
+            binding.btnMale.setSelected(true);
+            binding.btnFemale.setSelected(false);
+        } else {
+            binding.btnMale.setSelected(false);
+            binding.btnFemale.setSelected(true);
+        }
+    }
+
+    @Override
+    public String getName() {
+        return binding.edtName.getText().toString().trim();
+    }
+
+    @Override
+    public String getPhone() {
+        return binding.edtPhone.getText().toString().trim();
+    }
+
+    @Override
+    public String getGender() {
+        return gender;
+    }
+
+    @Override
+    public String getDate() {
+        return binding.etBirthday.getText().toString().trim();
     }
 }

@@ -2,6 +2,7 @@ package com.nguyenducdungbk.myapp.injection;
 
 import android.support.annotation.NonNull;
 
+import com.nguyenducdungbk.myapp.data.RestaurantData;
 import com.nguyenducdungbk.myapp.interactor.ConfirmInfoUserInteractor;
 import com.nguyenducdungbk.myapp.interactor.impl.ConfirmInfoUserInteractorImpl;
 import com.nguyenducdungbk.myapp.presenter.ConfirmInfoUserPresenter;
@@ -14,8 +15,8 @@ import dagger.Provides;
 @Module
 public final class ConfirmInfoUserViewModule {
     @Provides
-    public ConfirmInfoUserInteractor provideInteractor() {
-        return new ConfirmInfoUserInteractorImpl();
+    public ConfirmInfoUserInteractor provideInteractor(RestaurantData restaurantData) {
+        return new ConfirmInfoUserInteractorImpl(restaurantData);
     }
 
     @Provides

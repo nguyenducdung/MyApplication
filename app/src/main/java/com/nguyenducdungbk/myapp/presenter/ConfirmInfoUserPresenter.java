@@ -4,4 +4,5 @@ import com.nguyenducdungbk.myapp.view.ConfirmInfoUserView;
 
 public interface ConfirmInfoUserPresenter extends BasePresenter<ConfirmInfoUserView> {
 
+    void saveUser();
 }
