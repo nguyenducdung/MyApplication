@@ -1,9 +1,14 @@
 package com.nguyenducdungbk.myapp.data;
 
+import com.nguyenducdungbk.myapp.network.response.FoodResponse;
 import com.nguyenducdungbk.myapp.network.response.UserResponse;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
+import io.realm.Realm;
+import io.realm.RealmList;
 import io.realm.RealmResults;
 
 public class RestaurantData {
@@ -29,5 +34,21 @@ public class RestaurantData {
             RealmResults<UserResponse> resultUser = realm.where(UserResponse.class).findAll();
             resultUser.deleteAllFromRealm();
         });
+    }
+
+    public void saveFood(List<FoodResponse> foodResponse) {
+        if (foodResponse != null) {
+            realmManager.getRealm().executeTransaction(realm -> {
+                RealmList<FoodResponse> foodResponses = new RealmList<>();
+                foodResponses.addAll(foodResponse);
+                realm.insertOrUpdate(foodResponses);
+            });
+        }
+    }
+
+    public List<FoodResponse> getFoodList() {
+        return realmManager.getRealm()
+                .where(FoodResponse.class)
+                .findAll();
     }
 }

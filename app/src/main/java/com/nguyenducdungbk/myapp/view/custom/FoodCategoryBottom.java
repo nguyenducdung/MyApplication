@@ -11,7 +11,9 @@ import android.widget.TextView;
 
 import com.nguyenducdungbk.myapp.R;
 import com.nguyenducdungbk.myapp.adapter.FoodCategoryAdapter;
-import com.nguyenducdungbk.myapp.network.response.MonAnResponse;
+import com.nguyenducdungbk.myapp.network.response.FoodResponse;
+
+import java.util.List;
 
 public class FoodCategoryBottom extends RelativeLayout {
 
@@ -19,7 +21,6 @@ public class FoodCategoryBottom extends RelativeLayout {
     RecyclerView rvFoodCategory;
     TextView tvTitleCategory;
     LinearLayout llViewAll;
-    OnItemClickFood onItemClickFood;
 
 
     public FoodCategoryBottom(Context context) {
@@ -43,9 +44,16 @@ public class FoodCategoryBottom extends RelativeLayout {
         tvTitleCategory = findViewById(R.id.tv_title_category);
         llViewAll = findViewById(R.id.ll_view_all);
         rvFoodCategory.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
-        adapter = new FoodCategoryAdapter();
+        adapter = new FoodCategoryAdapter(context);
         rvFoodCategory.setAdapter(adapter);
         rvFoodCategory.setNestedScrollingEnabled(false);
+    }
+
+    public void setFoodList(List<FoodResponse> foodList) {
+        if (adapter != null) {
+            adapter.setFoodResponses(foodList);
+            adapter.notifyDataSetChanged();
+        }
     }
 
     public void setTitle(String title) {
@@ -59,9 +67,10 @@ public class FoodCategoryBottom extends RelativeLayout {
         return this;
     }
 
-    public interface OnItemClickFood {
-        void onClick(MonAnResponse monAnResponse);
-
-        void onClickAll();
+    public FoodCategoryBottom setOnItemClick(FoodCategoryAdapter.OnClickFood listener) {
+        if (listener != null) {
+            adapter.setOnClickFood(listener);
+        }
+        return this;
     }
 }

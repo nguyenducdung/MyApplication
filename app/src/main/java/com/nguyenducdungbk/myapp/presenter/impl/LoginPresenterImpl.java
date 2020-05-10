@@ -1,14 +1,19 @@
 package com.nguyenducdungbk.myapp.presenter.impl;
 
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 
 import com.google.firebase.database.FirebaseDatabase;
 import com.nguyenducdungbk.myapp.interactor.LoginInteractor;
+import com.nguyenducdungbk.myapp.network.response.FoodResponse;
 import com.nguyenducdungbk.myapp.network.response.UserResponse;
 import com.nguyenducdungbk.myapp.presenter.LoginPresenter;
 import com.nguyenducdungbk.myapp.view.LoginView;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -35,7 +40,31 @@ public final class LoginPresenterImpl extends BasePresenterImpl<LoginView> imple
         if (viewCreated) {
             mInteractor.deleteUser();
             getListUser();
+            getListFood();
         }
+    }
+
+    private void getListFood() {
+        compositeDisposable.add(mInteractor.getListFood()
+                .doOnSubscribe(disposable -> {
+                    if (mView != null) {
+                        mView.showLoading();
+                    }
+                })
+                .doFinally(() -> {
+                    if (mView != null) {
+                        mView.hiddenLoading();
+                    }
+                })
+                .subscribe(response -> {
+                    if (response != null && mView != null) {
+                        List<FoodResponse> foodResponses = new ArrayList<>();
+                        for (String keyset : response.getMap().keySet()) {
+                            foodResponses.add(response.getMap().get(keyset));
+                        }
+                        mInteractor.saveFoodResponse(foodResponses);
+                    }
+                }, Throwable::printStackTrace));
     }
 
     private void getListUser() {

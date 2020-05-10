@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_radius_top_16dp">
+
+    <com.nguyenducdungbk.myapp.view.custom.RestaurantToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tvtb_left_icon_src="@drawable/ic_close_black"
+        app:tvtb_title="Sườn xào chua ngọt" />
+
+    <ImageView
+        android:id="@+id/iv_food"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_dp150"
+        android:layout_marginStart="@dimen/_dp24"
+        android:layout_marginEnd="@dimen/_dp24"
+        android:adjustViewBounds="true"
+        android:src="@drawable/suon_xao"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_dp24"
+        android:layout_marginTop="@dimen/_dp12"
+        android:layout_marginEnd="@dimen/_dp24"
+        android:fontFamily="@font/lato_regular"
+        android:text="Sườn xào chua ngọt là món ăn chính trong bữa cơm gia đình Việt Nam, đây là món ăn không bị ngán, mà rất giàu chất dinh dưỡng. Cách làm sườn xào chua ngọt miền Bắc thì khá đơn giản với nguyên liệu chính là sườn, còn miền Nam thì nhiều màu sắc, và hương vị"
+        android:textSize="@dimen/text_size16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_food" />
+
+
+    <LinearLayout
+        android:id="@+id/ll_number"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_dp40"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/_dp12"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_description">
+
+        <ImageView
+            android:id="@+id/iv_minus"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_dp40"
+            android:layout_weight="1"
+            android:padding="@dimen/_dp10"
+            android:src="@drawable/ic_number_minus"
+            android:tint="@color/color_red_EF5050"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tv_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:fontFamily="@font/lato_heavy"
+            android:gravity="center_horizontal"
+            android:text="1"
+            android:textColor="#166177"
+            android:textSize="@dimen/text_size16" />
+
+        <ImageView
+            android:id="@+id/iv_add"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_dp40"
+            android:layout_weight="1"
+            android:padding="@dimen/_dp10"
+            android:src="@drawable/ic_number_add"
+            android:tint="@color/color_red_EF5050"
+            tools:ignore="ContentDescription" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_dp24"
+        android:layout_marginTop="@dimen/_dp12"
+        android:layout_marginEnd="@dimen/_dp24"
+        android:layout_marginBottom="@dimen/_dp12"
+        android:background="@drawable/bg_radius_8dp"
+        android:backgroundTint="@color/color_red_EF5050"
+        android:fontFamily="@font/lato_bold"
+        android:text="Đặt món"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_number" />
+</android.support.constraint.ConstraintLayout>

@@ -44,6 +44,9 @@ public final class HomepagePresenterImpl extends BasePresenterImpl<HomepageView>
             if (mInteractor.getUser() != null) {
                 mView.updateUserName(mInteractor.getUser().getName());
             }
+            if (mInteractor.getListFood() != null) {
+                mView.updateListFood(mInteractor.getListFood());
+            }
             compositeDisposable.add(RxBus.getInstance().subscribe(editUser));
         }
     }

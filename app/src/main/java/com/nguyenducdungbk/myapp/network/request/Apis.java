@@ -1,6 +1,7 @@
 package com.nguyenducdungbk.myapp.network.request;
 
 import com.nguyenducdungbk.myapp.network.response.BaseResponse;
+import com.nguyenducdungbk.myapp.network.response.FoodFirebase;
 import com.nguyenducdungbk.myapp.network.response.User;
 
 import java.util.Map;
@@ -20,5 +21,8 @@ public interface Apis {
 
     @GET("list_user.json")
     Single<User> getUserList();
+
+    @GET("list_food.json")
+    Single<FoodFirebase> getFoodList();
 
 }
