@@ -17,6 +17,7 @@ import com.nguyenducdungbk.myapp.presenter.HomepagePresenter;
 import com.nguyenducdungbk.myapp.presenter.loader.PresenterFactory;
 import com.nguyenducdungbk.myapp.view.HomepageView;
 import com.nguyenducdungbk.myapp.view.custom.FoodCategoryBottom;
+import com.nguyenducdungbk.myapp.view.dialog.FoodDetailDialog;
 
 import java.util.List;
 
@@ -64,7 +65,7 @@ public final class HomepageFragment extends BaseFragment<HomepagePresenter, Home
         binding.fcbOfferFood.setOnItemClick(new FoodCategoryAdapter.OnClickFood() {
             @Override
             public void onClickFood(FoodResponse foodResponse) {
-                Toast.makeText(getContext(), foodResponse.getName(), Toast.LENGTH_SHORT).show();
+                new FoodDetailDialog(getContext(), foodResponse);
             }
         });
         binding.fcbAgainFood.setTitle("Đặt lại lần nữa");
@@ -72,7 +73,7 @@ public final class HomepageFragment extends BaseFragment<HomepagePresenter, Home
         binding.fcbAgainFood.setOnItemClick(new FoodCategoryAdapter.OnClickFood() {
             @Override
             public void onClickFood(FoodResponse foodResponse) {
-                Toast.makeText(getContext(), foodResponse.getName(), Toast.LENGTH_SHORT).show();
+                new FoodDetailDialog(getContext(), foodResponse);
             }
         });
         binding.fcbPromotionFood.setTitle("Ưu đãi đặc biết");
@@ -80,12 +81,17 @@ public final class HomepageFragment extends BaseFragment<HomepagePresenter, Home
         binding.fcbPromotionFood.setOnItemClick(new FoodCategoryAdapter.OnClickFood() {
             @Override
             public void onClickFood(FoodResponse foodResponse) {
-                Toast.makeText(getContext(), foodResponse.getName(), Toast.LENGTH_SHORT).show();
+                new FoodDetailDialog(getContext(), foodResponse);
             }
         });
 
         binding.tvDescription.setSelected(true);
         binding.rlSearch.setOnClickListener(view -> {
+            if (!avoidDuplicateClick()) {
+                getViewController().addFragment(SearchFoodFragment.class, null);
+            }
+        });
+        binding.edtSearch.setOnClickListener(view -> {
             if (!avoidDuplicateClick()) {
                 getViewController().addFragment(SearchFoodFragment.class, null);
             }

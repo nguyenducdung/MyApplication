@@ -61,23 +61,35 @@
                 android:id="@+id/rvSearchResult"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="@dimen/_dp24"
-                android:paddingEnd="@dimen/_dp24"
                 android:visibility="gone" />
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvEmpty"
+        <LinearLayout
+            android:layout_centerInParent="true"
+            android:id="@+id/llEmptySearch"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerVertical="true"
-            android:fontFamily="@font/lato_regular"
-            android:gravity="center"
-            android:text="@string/no_data"
-            android:textColor="@color/black_3A454D"
-            android:textSize="@dimen/text_size14"
-            android:visibility="gone" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_20dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="gone">
 
+            <ImageView
+                android:layout_width="@dimen/_dp64"
+                android:layout_height="@dimen/_dp64"
+                android:src="@drawable/ic_empty_search"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_6dp"
+                android:fontFamily="@font/lato_bold"
+                android:text="Không tìm thấy kết quả"
+                android:textColor="@color/color_article_title"
+                android:textSize="@dimen/text_size16" />
+
+        </LinearLayout>
     </RelativeLayout>
 </layout>

@@ -1,10 +1,14 @@
 package com.nguyenducdungbk.myapp.presenter.impl;
 
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
 import com.nguyenducdungbk.myapp.interactor.SearchFoodInteractor;
 import com.nguyenducdungbk.myapp.presenter.SearchFoodPresenter;
+import com.nguyenducdungbk.myapp.utils.sharedpreference.RxPreferenceHelper;
 import com.nguyenducdungbk.myapp.view.SearchFoodView;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -27,6 +31,12 @@ public final class SearchFoodPresenterImpl extends BasePresenterImpl<SearchFoodV
         super.onStart(viewCreated);
 
         // Your code here. Your view is available using mView and will not be null until next onStop()
+        if (viewCreated && mView != null) {
+            List<String> recentSearches = mInteractor.getRecentMapSearch();
+            if (mView != null) {
+                mView.setRecentSearchData(recentSearches);
+            }
+        }
     }
 
     @Override
@@ -44,5 +54,20 @@ public final class SearchFoodPresenterImpl extends BasePresenterImpl<SearchFoodV
          */
 
         super.onPresenterDestroyed();
+    }
+
+    @Override
+    public void searchData(String searchQuery) {
+        if (mView != null) {
+            mView.updateListFood(mInteractor.getListFood());
+        }
+    }
+
+    @Override
+    public void saveResentSearch(String keySearch) {
+        if (TextUtils.isEmpty(keySearch)) {
+            return;
+        }
+        mInteractor.writeMapRecentSearches(keySearch);
     }
 }
