@@ -22,4 +22,7 @@
     <string name="no_data">Không có nội dung tương ứng</string>
     <string name="confirm_info_user_date_birth">dd/mm/yyyy</string>
     <string name="cap_nhat_thanh_cong">Cập nhật thông tin thành công!</string>
+    <string name="de_xuat_cho_ban">Đề xuất cho bạn</string>
+    <string name="dat_lai_lan_nua">Đặt lại lần nữa</string>
+    <string name="uu_dai_dac_biet">Ưu đãi đặc biết</string>
 </resources>

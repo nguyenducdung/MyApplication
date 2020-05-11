@@ -2,6 +2,7 @@ package com.nguyenducdungbk.myapp.injection;
 
 import android.support.annotation.NonNull;
 
+import com.nguyenducdungbk.myapp.data.RestaurantData;
 import com.nguyenducdungbk.myapp.interactor.FoodListInteractor;
 import com.nguyenducdungbk.myapp.interactor.impl.FoodListInteractorImpl;
 import com.nguyenducdungbk.myapp.presenter.FoodListPresenter;
@@ -14,8 +15,8 @@ import dagger.Provides;
 @Module
 public final class FoodListViewModule {
     @Provides
-    public FoodListInteractor provideInteractor() {
-        return new FoodListInteractorImpl();
+    public FoodListInteractor provideInteractor(RestaurantData restaurantData) {
+        return new FoodListInteractorImpl(restaurantData);
     }
 
     @Provides

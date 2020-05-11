@@ -20,9 +20,6 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.FoodLi
     private FoodCategoryAdapter.OnClickFood onClickFood;
     private Context context;
 
-    public FoodListAdapter() {
-    }
-
     public FoodListAdapter(Context context) {
         this.context = context;
     }

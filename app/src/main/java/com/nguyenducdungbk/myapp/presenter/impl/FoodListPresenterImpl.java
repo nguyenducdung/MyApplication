@@ -27,6 +27,9 @@ public final class FoodListPresenterImpl extends BasePresenterImpl<FoodListView>
         super.onStart(viewCreated);
 
         // Your code here. Your view is available using mView and will not be null until next onStop()
+        if (viewCreated && mView != null) {
+            mView.updateListFood(mInteractor.getListFood());
+        }
     }
 
     @Override

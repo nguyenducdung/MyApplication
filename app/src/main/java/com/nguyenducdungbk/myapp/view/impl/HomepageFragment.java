@@ -1,6 +1,7 @@
 package com.nguyenducdungbk.myapp.view.impl;
 
 import android.annotation.SuppressLint;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.Toast;
@@ -60,24 +61,36 @@ public final class HomepageFragment extends BaseFragment<HomepagePresenter, Home
 
     @Override
     public void initView() {
-        binding.fcbOfferFood.setTitle("Đề xuất cho bạn");
-        binding.fcbOfferFood.setOnItemClickFood(view -> getViewController().addFragment(FoodListFragment.class, null));
+        binding.fcbOfferFood.setTitle(getString(R.string.de_xuat_cho_ban));
+        binding.fcbOfferFood.setOnItemClickFood(view -> {
+            Bundle bundle = new Bundle();
+            bundle.putString(FoodListFragment.TITLE_TOOLBAR, getString(R.string.de_xuat_cho_ban));
+            getViewController().addFragment(FoodListFragment.class, bundle);
+        });
         binding.fcbOfferFood.setOnItemClick(new FoodCategoryAdapter.OnClickFood() {
             @Override
             public void onClickFood(FoodResponse foodResponse) {
                 new FoodDetailDialog(getContext(), foodResponse);
             }
         });
-        binding.fcbAgainFood.setTitle("Đặt lại lần nữa");
-        binding.fcbAgainFood.setOnItemClickFood(view -> getViewController().addFragment(FoodListFragment.class, null));
+        binding.fcbAgainFood.setTitle(getString(R.string.dat_lai_lan_nua));
+        binding.fcbAgainFood.setOnItemClickFood(view -> {
+            Bundle bundle = new Bundle();
+            bundle.putString(FoodListFragment.TITLE_TOOLBAR, getString(R.string.dat_lai_lan_nua));
+            getViewController().addFragment(FoodListFragment.class, bundle);
+        });
         binding.fcbAgainFood.setOnItemClick(new FoodCategoryAdapter.OnClickFood() {
             @Override
             public void onClickFood(FoodResponse foodResponse) {
                 new FoodDetailDialog(getContext(), foodResponse);
             }
         });
-        binding.fcbPromotionFood.setTitle("Ưu đãi đặc biết");
-        binding.fcbPromotionFood.setOnItemClickFood(view -> getViewController().addFragment(FoodListFragment.class, null));
+        binding.fcbPromotionFood.setTitle(getString(R.string.uu_dai_dac_biet));
+        binding.fcbPromotionFood.setOnItemClickFood(view -> {
+            Bundle bundle = new Bundle();
+            bundle.putString(FoodListFragment.TITLE_TOOLBAR, getString(R.string.uu_dai_dac_biet));
+            getViewController().addFragment(FoodListFragment.class, bundle);
+        });
         binding.fcbPromotionFood.setOnItemClick(new FoodCategoryAdapter.OnClickFood() {
             @Override
             public void onClickFood(FoodResponse foodResponse) {
