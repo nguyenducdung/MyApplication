@@ -2,6 +2,7 @@ package com.nguyenducdungbk.myapp.view.impl;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
 
 import com.nguyenducdungbk.myapp.R;
 import com.nguyenducdungbk.myapp.adapter.FoodStatusAdapter;
@@ -9,15 +10,19 @@ import com.nguyenducdungbk.myapp.databinding.FragmentFoodStatusBinding;
 import com.nguyenducdungbk.myapp.injection.AppComponent;
 import com.nguyenducdungbk.myapp.injection.DaggerFoodStatusViewComponent;
 import com.nguyenducdungbk.myapp.injection.FoodStatusViewModule;
+import com.nguyenducdungbk.myapp.network.response.FoodResponse;
 import com.nguyenducdungbk.myapp.presenter.FoodStatusPresenter;
 import com.nguyenducdungbk.myapp.presenter.loader.PresenterFactory;
 import com.nguyenducdungbk.myapp.view.FoodStatusView;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
 public final class FoodStatusFragment extends BaseFragment<FoodStatusPresenter, FoodStatusView, FragmentFoodStatusBinding> implements FoodStatusView {
     @Inject
     PresenterFactory<FoodStatusPresenter> mPresenterFactory;
+    private FoodStatusAdapter adapter;
 
     // Your presenter is available using the mPresenter variable
 
@@ -52,8 +57,23 @@ public final class FoodStatusFragment extends BaseFragment<FoodStatusPresenter, 
 
     @Override
     public void initView() {
-        FoodStatusAdapter adapter = new FoodStatusAdapter();
+        adapter = new FoodStatusAdapter(getContext());
         binding.rvFood.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         binding.rvFood.setAdapter(adapter);
+    }
+
+    @Override
+    public void showNoData() {
+        binding.tvEmpty.setVisibility(View.VISIBLE);
+        binding.rvFood.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void updateListFood(List<FoodResponse> foodResponses) {
+        binding.tvEmpty.setVisibility(View.GONE);
+        binding.rvFood.setVisibility(View.VISIBLE);
+        if (adapter != null) {
+            adapter.setFoodResponses(foodResponses);
+        }
     }
 }

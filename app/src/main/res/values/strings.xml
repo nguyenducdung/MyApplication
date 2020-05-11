@@ -19,7 +19,7 @@
     <string name="logout">Đăng xuất</string>
     <string name="danh_sach_nhan_vien">Danh sách nhân viên</string>
     <string name="staff_description">Nếu có bất kì thắc mắc hoặc khiếu nại gì đến nhà hàng, nhân viên,... Quý khách vui lòng liên hệ trực tiếp đến quản lý phụ trách cửa hàng!</string>
-    <string name="no_data">Không có nội dung tương ứng</string>
+    <string name="no_data">Không có nội dung tương ứng!</string>
     <string name="confirm_info_user_date_birth">dd/mm/yyyy</string>
     <string name="cap_nhat_thanh_cong">Cập nhật thông tin thành công!</string>
     <string name="de_xuat_cho_ban">Đề xuất cho bạn</string>

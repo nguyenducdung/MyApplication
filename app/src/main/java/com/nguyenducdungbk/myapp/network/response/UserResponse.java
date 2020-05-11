@@ -19,6 +19,8 @@ public class UserResponse extends RealmObject implements Parcelable {
     private String dateOfBirth;
     @SerializedName("phone")
     private String phone;
+    @SerializedName("orderOld")
+    private String orderOld;
 
     // Default constructor required for calls to
     // DataSnapshot.getValue(User.class)
@@ -37,6 +39,7 @@ public class UserResponse extends RealmObject implements Parcelable {
         gender = in.readString();
         dateOfBirth = in.readString();
         phone = in.readString();
+        orderOld = in.readString();
     }
 
     public static final Creator<UserResponse> CREATOR = new Creator<UserResponse>() {
@@ -83,6 +86,14 @@ public class UserResponse extends RealmObject implements Parcelable {
         this.phone = phone;
     }
 
+    public String getOrderOld() {
+        return orderOld;
+    }
+
+    public void setOrderOld(String orderOld) {
+        this.orderOld = orderOld;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -94,5 +105,6 @@ public class UserResponse extends RealmObject implements Parcelable {
         parcel.writeString(gender);
         parcel.writeString(dateOfBirth);
         parcel.writeString(phone);
+        parcel.writeString(orderOld);
     }
 }
