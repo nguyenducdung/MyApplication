@@ -11,11 +11,17 @@ import com.nguyenducdungbk.myapp.network.response.UserResponse;
 import com.nguyenducdungbk.myapp.presenter.LoginPresenter;
 import com.nguyenducdungbk.myapp.view.LoginView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
 import javax.inject.Inject;
+
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 public final class LoginPresenterImpl extends BasePresenterImpl<LoginView> implements LoginPresenter {
     /**
@@ -39,51 +45,7 @@ public final class LoginPresenterImpl extends BasePresenterImpl<LoginView> imple
         // Your code here. Your view is available using mView and will not be null until next onStop()
         if (viewCreated) {
             mInteractor.deleteUser();
-            getListUser();
-            getListFood();
         }
-    }
-
-    private void getListFood() {
-        compositeDisposable.add(mInteractor.getListFood()
-                .doOnSubscribe(disposable -> {
-                    if (mView != null) {
-                        mView.showLoading();
-                    }
-                })
-                .doFinally(() -> {
-                    if (mView != null) {
-                        mView.hiddenLoading();
-                    }
-                })
-                .subscribe(response -> {
-                    if (response != null && mView != null) {
-                        List<FoodResponse> foodResponses = new ArrayList<>();
-                        for (String keyset : response.getMap().keySet()) {
-                            foodResponses.add(response.getMap().get(keyset));
-                        }
-                        mInteractor.saveFoodResponse(foodResponses);
-                    }
-                }, Throwable::printStackTrace));
-    }
-
-    private void getListUser() {
-        compositeDisposable.add(mInteractor.getListUser()
-                .doOnSubscribe(disposable -> {
-                    if (mView != null) {
-                        mView.showLoading();
-                    }
-                })
-                .doFinally(() -> {
-                    if (mView != null) {
-                        mView.hiddenLoading();
-                    }
-                })
-                .subscribe(response -> {
-                    if (response != null && mView != null) {
-                        this.userList = response.getUserList();
-                    }
-                }, Throwable::printStackTrace));
     }
 
     @Override
@@ -105,19 +67,32 @@ public final class LoginPresenterImpl extends BasePresenterImpl<LoginView> imple
 
     @Override
     public void login(String name, String phone) {
-        if (mView == null) {
-            return;
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("phone", phone);
+            jsonObject.put("name", name);
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
-        UserResponse userResponse = userList.get(phone);
-        if (userResponse != null) {
-            userResponse.setName(name);
-            mInteractor.saveUser(userResponse);
-            mView.loginSuccess();
-        } else {
-            UserResponse userResponseNew = new UserResponse(name, phone);
-            FirebaseDatabase.getInstance().getReference().child("list_user").child("users").child(phone).setValue(userResponseNew);
-            mInteractor.saveUser(userResponseNew);
-            mView.loginSuccess();
-        }
+        RequestBody body = RequestBody.create(MediaType.parse("text/plain"), jsonObject.toString());
+        compositeDisposable.add(mInteractor.loginUser(body)
+                .doOnSubscribe(disposable -> {
+                    if (mView != null) {
+                        mView.showLoading();
+                    }
+                })
+                .doFinally(() -> {
+                    if (mView != null) {
+                        mView.hiddenLoading();
+                    }
+                })
+                .subscribe(response -> {
+                    if (response != null && mView != null) {
+                        UserResponse userResponse = response.getUserResponse();
+                        userResponse.setToken(response.getToken());
+                        mInteractor.saveUser(userResponse);
+                        mView.loginSuccess();
+                    }
+                }, Throwable::printStackTrace));
     }
 }

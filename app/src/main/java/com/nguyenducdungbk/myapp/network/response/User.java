@@ -5,14 +5,24 @@ import com.google.gson.annotations.SerializedName;
 import java.util.LinkedHashMap;
 
 public class User {
-    @SerializedName("users")
-    private LinkedHashMap<String, UserResponse> userList;
+    @SerializedName("user")
+    private UserResponse userResponse;
+    @SerializedName("token")
+    private String token;
 
-    public LinkedHashMap<String, UserResponse> getUserList() {
-        return userList;
+    public UserResponse getUserResponse() {
+        return userResponse;
     }
 
-    public void setUserList(LinkedHashMap<String, UserResponse> userList) {
-        this.userList = userList;
+    public void setUserResponse(UserResponse userResponse) {
+        this.userResponse = userResponse;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

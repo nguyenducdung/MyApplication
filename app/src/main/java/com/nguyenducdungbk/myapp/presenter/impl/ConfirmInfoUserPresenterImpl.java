@@ -86,9 +86,9 @@ public final class ConfirmInfoUserPresenterImpl extends BasePresenterImpl<Confir
         mInteractor.deleteUser();
         UserResponse userResponse = new UserResponse();
         userResponse.setName(mView.getName());
-        userResponse.setPhone(mView.getPhone());
-        userResponse.setGender(mView.getGender());
-        userResponse.setDateOfBirth(mView.getDate());
+//        userResponse.setPhone(mView.getPhone());
+//        userResponse.setGender(mView.getGender());
+//        userResponse.setDateOfBirth(mView.getDate());
         mInteractor.saveUser(userResponse);
         mView.showUpdateSuccess();
         RxBus.getInstance().publish(Define.Bus.EDIT_USER);

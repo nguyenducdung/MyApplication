@@ -45,7 +45,7 @@ public class FoodStatusAdapter extends RecyclerView.Adapter<FoodStatusAdapter.Fo
 
     @Override
     public int getItemCount() {
-        return foodResponses.size();
+        return foodResponses != null ? foodResponses.size() : 0;
     }
 
     class FoodStatusViewHolder extends RecyclerView.ViewHolder {

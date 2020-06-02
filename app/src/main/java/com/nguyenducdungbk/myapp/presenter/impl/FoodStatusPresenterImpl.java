@@ -32,20 +32,20 @@ public final class FoodStatusPresenterImpl extends BasePresenterImpl<FoodStatusV
 
         // Your code here. Your view is available using mView and will not be null until next onStop()
         if (viewCreated && mView != null) {
-            if (mInteractor.getUser() != null && mInteractor.getUser().getOrderOld() != null) {
-                List<FoodResponse> foodResponses = new ArrayList<>();
-                String[] foodOrder = mInteractor.getUser().getOrderOld().split(",");
-                for (int i = 0; i < foodOrder.length ; i++) {
-                    for (FoodResponse foodResponse : mInteractor.getListFood()) {
-                        if (foodOrder[i].trim().equalsIgnoreCase(String.valueOf(foodResponse.getId()))) {
-                            foodResponses.add(foodResponse);
-                        }
-                    }
-                }
-                mView.updateListFood(foodResponses);
-            } else {
-                mView.showNoData();
-            }
+//            if (mInteractor.getUser() != null && mInteractor.getUser().getOrderOld() != null) {
+//                List<FoodResponse> foodResponses = new ArrayList<>();
+//                String[] foodOrder = mInteractor.getUser().getOrderOld().split(",");
+//                for (int i = 0; i < foodOrder.length ; i++) {
+//                    for (FoodResponse foodResponse : mInteractor.getListFood()) {
+//                        if (foodOrder[i].trim().equalsIgnoreCase(String.valueOf(foodResponse.getId()))) {
+//                            foodResponses.add(foodResponse);
+//                        }
+//                    }
+//                }
+//                mView.updateListFood(foodResponses);
+//            } else {
+//                mView.showNoData();
+//            }
         }
     }
 

@@ -10,36 +10,58 @@ import io.realm.annotations.PrimaryKey;
 
 public class UserResponse extends RealmObject implements Parcelable {
     @PrimaryKey
+    @SerializedName("id")
     private int idRealm = 1;
+    @SerializedName("code")
+    private String code;
     @SerializedName("name")
     private String name;
+    @SerializedName("avatar")
+    private String avatar;
     @SerializedName("gender")
-    private String gender;
-    @SerializedName("dateOfBirth")
-    private String dateOfBirth;
+    private int gender;
+    @SerializedName("birthday")
+    private String birthday;
     @SerializedName("phone")
     private String phone;
-    @SerializedName("orderOld")
-    private String orderOld;
+    @SerializedName("email")
+    private String email;
+
+    private String token;
 
     // Default constructor required for calls to
     // DataSnapshot.getValue(User.class)
     public UserResponse() {
     }
 
-    public UserResponse(String name, String phone) {
-        this.name = name;
-        this.phone = phone;
-        this.gender = "";
-        this.dateOfBirth = "";
+    protected UserResponse(Parcel in) {
+        idRealm = in.readInt();
+        code = in.readString();
+        name = in.readString();
+        avatar = in.readString();
+        gender = in.readInt();
+        birthday = in.readString();
+        phone = in.readString();
+        email = in.readString();
+        token = in.readString();
     }
 
-    protected UserResponse(Parcel in) {
-        name = in.readString();
-        gender = in.readString();
-        dateOfBirth = in.readString();
-        phone = in.readString();
-        orderOld = in.readString();
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(idRealm);
+        dest.writeString(code);
+        dest.writeString(name);
+        dest.writeString(avatar);
+        dest.writeInt(gender);
+        dest.writeString(birthday);
+        dest.writeString(phone);
+        dest.writeString(email);
+        dest.writeString(token);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<UserResponse> CREATOR = new Creator<UserResponse>() {
@@ -54,6 +76,30 @@ public class UserResponse extends RealmObject implements Parcelable {
         }
     };
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public int getIdRealm() {
+        return idRealm;
+    }
+
+    public void setIdRealm(int idRealm) {
+        this.idRealm = idRealm;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
     public String getName() {
         return name;
     }
@@ -62,20 +108,28 @@ public class UserResponse extends RealmObject implements Parcelable {
         this.name = name;
     }
 
-    public String getGender() {
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public int getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(int gender) {
         this.gender = gender;
     }
 
-    public String getDateOfBirth() {
-        return dateOfBirth;
+    public String getBirthday() {
+        return birthday;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 
     public String getPhone() {
@@ -86,25 +140,11 @@ public class UserResponse extends RealmObject implements Parcelable {
         this.phone = phone;
     }
 
-    public String getOrderOld() {
-        return orderOld;
+    public String getEmail() {
+        return email;
     }
 
-    public void setOrderOld(String orderOld) {
-        this.orderOld = orderOld;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(name);
-        parcel.writeString(gender);
-        parcel.writeString(dateOfBirth);
-        parcel.writeString(phone);
-        parcel.writeString(orderOld);
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
