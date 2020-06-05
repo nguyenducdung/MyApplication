@@ -1,5 +1,6 @@
 package com.nguyenducdungbk.myapp.view.impl;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 
@@ -22,6 +23,10 @@ import javax.inject.Inject;
 
 public final class FoodListFragment extends BaseFragment<FoodListPresenter, FoodListView, FragmentFoodListBinding> implements FoodListView {
     public static final String TITLE_TOOLBAR = "TITLE_TOOLBAR";
+    public static final String TYPE_SCREEN = "TYPE_SCREEN";
+    public static final String TYPE_SUGGEST = "TYPE_SUGGEST";
+    public static final String TYPE_PROMOTION = "TYPE_PROMOTION";
+    public static final String TYPE_HISTORY = "TYPE_HISTORY";
     @Inject
     PresenterFactory<FoodListPresenter> mPresenterFactory;
     private FoodListAdapter adapter;
@@ -81,5 +86,10 @@ public final class FoodListFragment extends BaseFragment<FoodListPresenter, Food
         if (adapter != null) {
             adapter.setFoodResponses(listFood);
         }
+    }
+
+    @Override
+    public Bundle getArgument() {
+        return getArguments();
     }
 }

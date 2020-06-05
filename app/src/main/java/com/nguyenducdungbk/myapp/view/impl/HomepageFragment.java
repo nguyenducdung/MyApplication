@@ -61,10 +61,14 @@ public final class HomepageFragment extends BaseFragment<HomepagePresenter, Home
 
     @Override
     public void initView() {
+        if (getContext() == null) {
+            return;
+        }
         binding.fcbOfferFood.setTitle(getString(R.string.de_xuat_cho_ban));
         binding.fcbOfferFood.setOnItemClickFood(view -> {
             Bundle bundle = new Bundle();
             bundle.putString(FoodListFragment.TITLE_TOOLBAR, getString(R.string.de_xuat_cho_ban));
+            bundle.putString(FoodListFragment.TYPE_SCREEN, FoodListFragment.TYPE_SUGGEST);
             getViewController().addFragment(FoodListFragment.class, bundle);
         });
         binding.fcbOfferFood.setOnItemClick(new FoodCategoryAdapter.OnClickFood() {
@@ -77,6 +81,7 @@ public final class HomepageFragment extends BaseFragment<HomepagePresenter, Home
         binding.fcbAgainFood.setOnItemClickFood(view -> {
             Bundle bundle = new Bundle();
             bundle.putString(FoodListFragment.TITLE_TOOLBAR, getString(R.string.dat_lai_lan_nua));
+            bundle.putString(FoodListFragment.TYPE_SCREEN, FoodListFragment.TYPE_HISTORY);
             getViewController().addFragment(FoodListFragment.class, bundle);
         });
         binding.fcbAgainFood.setOnItemClick(new FoodCategoryAdapter.OnClickFood() {
@@ -89,6 +94,7 @@ public final class HomepageFragment extends BaseFragment<HomepagePresenter, Home
         binding.fcbPromotionFood.setOnItemClickFood(view -> {
             Bundle bundle = new Bundle();
             bundle.putString(FoodListFragment.TITLE_TOOLBAR, getString(R.string.uu_dai_dac_biet));
+            bundle.putString(FoodListFragment.TYPE_SCREEN, FoodListFragment.TYPE_PROMOTION);
             getViewController().addFragment(FoodListFragment.class, bundle);
         });
         binding.fcbPromotionFood.setOnItemClick(new FoodCategoryAdapter.OnClickFood() {

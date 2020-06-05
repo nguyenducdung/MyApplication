@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
-import com.nguyenducdungbk.myapp.MyApp;
 import com.nguyenducdungbk.myapp.R;
 import com.nguyenducdungbk.myapp.databinding.ItemFoodHorizontalBinding;
 import com.nguyenducdungbk.myapp.network.response.FoodResponse;
@@ -55,7 +54,7 @@ public class FoodCategoryAdapter extends RecyclerView.Adapter<FoodCategoryAdapte
 
     @Override
     public int getItemCount() {
-        return foodResponses.size();
+        return foodResponses != null ? foodResponses.size() : 0;
     }
 
     class FoodCategoryViewHolder extends RecyclerView.ViewHolder {

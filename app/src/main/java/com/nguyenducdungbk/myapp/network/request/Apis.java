@@ -34,4 +34,13 @@ public interface Apis {
     @POST("api/login")
     Single<User> loginUser(@Body RequestBody body);
 
+    @GET("api/food/history")
+    Single<FoodFirebase> getListFoodHistory(@Header("Authorization") String token);
+
+    @GET("api/food/suggestion")
+    Single<FoodFirebase> getListFoodSuggest(@Header("Authorization") String token);
+
+    @GET("api/food/endow")
+    Single<FoodFirebase> getListFoodPromotion(@Header("Authorization") String token);
+
 }

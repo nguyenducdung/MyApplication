@@ -1,9 +1,14 @@
 package com.nguyenducdungbk.myapp.interactor;
 
-import com.nguyenducdungbk.myapp.network.response.FoodResponse;
+import com.nguyenducdungbk.myapp.network.response.FoodFirebase;
 
-import java.util.List;
+import io.reactivex.Single;
 
 public interface FoodListInteractor extends BaseInteractor {
-    List<FoodResponse> getListFood();
+
+    Single<FoodFirebase> getListFoodSuggest();
+
+    Single<FoodFirebase> getListFoodPromotion();
+
+    Single<FoodFirebase> getListFoodHistory();
 }
