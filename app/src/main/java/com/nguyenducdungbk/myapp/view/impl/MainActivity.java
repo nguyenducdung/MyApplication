@@ -11,6 +11,7 @@ import com.nguyenducdungbk.myapp.databinding.ActivityMainBinding;
 import com.nguyenducdungbk.myapp.injection.AppComponent;
 import com.nguyenducdungbk.myapp.injection.DaggerMainViewComponent;
 import com.nguyenducdungbk.myapp.injection.MainViewModule;
+import com.nguyenducdungbk.myapp.network.response.FoodResponse;
 import com.nguyenducdungbk.myapp.presenter.MainPresenter;
 import com.nguyenducdungbk.myapp.presenter.loader.PresenterFactory;
 import com.nguyenducdungbk.myapp.view.MainView;
@@ -88,5 +89,19 @@ public final class MainActivity extends BaseActivity<MainPresenter, MainView, Ac
     @Override
     public void hideIconOrder() {
         ((RelativeLayout) findViewById(R.id.rl_orderfood)).setVisibility(View.GONE);
+    }
+
+    @Override
+    public void addFoodOrder(FoodResponse foodResponse) {
+        if (mPresenter != null) {
+            mPresenter.addFoodOrder(foodResponse);
+        }
+    }
+
+    @Override
+    public void removeFoodOrder(FoodResponse foodResponse) {
+        if (mPresenter != null) {
+            mPresenter.removeFoodOrder(foodResponse);
+        }
     }
 }

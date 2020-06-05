@@ -11,5 +11,9 @@ public interface HomepageView extends BaseView {
 
     void updateUserName(String name);
 
-    void updateListFood(List<FoodResponse> listFood);
+    void initFoodSuggest(List<FoodResponse> foodResponses);
+
+    void initFoodPromotion(List<FoodResponse> foodResponses);
+
+    void initFoodHistory(List<FoodResponse> foodResponses);
 }

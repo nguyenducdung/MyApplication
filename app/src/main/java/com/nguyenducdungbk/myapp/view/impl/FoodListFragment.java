@@ -71,12 +71,13 @@ public final class FoodListFragment extends BaseFragment<FoodListPresenter, Food
         adapter = new FoodListAdapter(getContext());
         binding.rvFood.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         binding.rvFood.setAdapter(adapter);
-        adapter.setOnClickFood(new FoodCategoryAdapter.OnClickFood() {
-            @Override
-            public void onClickFood(FoodResponse foodResponse) {
-                hideKeyboard();
-                new FoodDetailDialog(getContext(), foodResponse);
-            }
+        adapter.setOnClickFood(foodResponse -> {
+            hideKeyboard();
+            new FoodDetailDialog(getContext(), foodResponse, foodResponse1 -> {
+                if (getActivity() != null) {
+                    ((MainActivity) getActivity()).addFoodOrder(foodResponse1);
+                }
+            });
         });
         binding.toolbar.setOnBackClickListener(view -> backPressed());
     }

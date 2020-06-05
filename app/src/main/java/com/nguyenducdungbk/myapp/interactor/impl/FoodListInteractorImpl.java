@@ -26,8 +26,24 @@ public final class FoodListInteractorImpl implements FoodListInteractor {
     }
 
     @Override
-    public List<FoodResponse> getListFood() {
-        return restaurantData.getFoodList();
+    public Single<FoodFirebase> getListFoodSuggest() {
+        return apis.getListFoodSuggest(getUser().getToken())
+                .observeOn(rxSchedulers.androidThread())
+                .subscribeOn(rxSchedulers.io());
+    }
+
+    @Override
+    public Single<FoodFirebase> getListFoodPromotion() {
+        return apis.getListFoodPromotion(getUser().getToken())
+                .observeOn(rxSchedulers.androidThread())
+                .subscribeOn(rxSchedulers.io());
+    }
+
+    @Override
+    public Single<FoodFirebase> getListFoodHistory() {
+        return apis.getListFoodHistory(getUser().getToken())
+                .observeOn(rxSchedulers.androidThread())
+                .subscribeOn(rxSchedulers.io());
     }
 
     private UserResponse getUser() {

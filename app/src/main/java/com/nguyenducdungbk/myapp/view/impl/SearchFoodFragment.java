@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 
 import com.nguyenducdungbk.myapp.R;
-import com.nguyenducdungbk.myapp.adapter.FoodCategoryAdapter;
 import com.nguyenducdungbk.myapp.adapter.FoodListAdapter;
 import com.nguyenducdungbk.myapp.adapter.RecentSearchAdapter;
 import com.nguyenducdungbk.myapp.databinding.FragmentSearchFoodBinding;
@@ -92,12 +91,13 @@ public final class SearchFoodFragment extends BaseFragment<SearchFoodPresenter, 
         binding.rvSearchResult.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         adapter = new FoodListAdapter(getContext());
         binding.rvSearchResult.setAdapter(adapter);
-        adapter.setOnClickFood(new FoodCategoryAdapter.OnClickFood() {
-            @Override
-            public void onClickFood(FoodResponse foodResponse) {
-                hideKeyboard();
-                new FoodDetailDialog(getContext(), foodResponse);
-            }
+        adapter.setOnClickFood(foodResponse -> {
+            hideKeyboard();
+            new FoodDetailDialog(getContext(), foodResponse, foodResponse1 -> {
+                if (getActivity() != null) {
+                    ((MainActivity) getActivity()).addFoodOrder(foodResponse1);
+                }
+            });
         });
         binding.rvSearchResult.setNestedScrollingEnabled(false);
     }
@@ -120,7 +120,7 @@ public final class SearchFoodFragment extends BaseFragment<SearchFoodPresenter, 
                     String keySearch = binding.toolbar.getTextSearch() != null ? binding.toolbar.getTextSearch().trim() : null;
                     if (actionId == EditorInfo.IME_ACTION_SEARCH && mPresenter != null
                             && !TextUtils.isEmpty(keySearch)) {
-                            mPresenter.saveResentSearch(keySearch);
+                        mPresenter.saveResentSearch(keySearch);
                         return true;
                     }
                     return false;

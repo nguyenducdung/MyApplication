@@ -3,16 +3,17 @@ package com.nguyenducdungbk.myapp.network.response;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 
 public class FoodFirebase {
     @SerializedName("foods")
-    private LinkedHashMap<String, FoodResponse> map;
+    List<FoodResponse> foodResponses;
 
-    public LinkedHashMap<String, FoodResponse> getMap() {
-        return map;
+    public List<FoodResponse> getFoodResponses() {
+        return foodResponses;
     }
 
-    public void setMap(LinkedHashMap<String, FoodResponse> map) {
-        this.map = map;
+    public void setFoodResponses(List<FoodResponse> foodResponses) {
+        this.foodResponses = foodResponses;
     }
 }

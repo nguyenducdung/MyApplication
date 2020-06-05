@@ -1,22 +1,14 @@
 package com.nguyenducdungbk.myapp.presenter.impl;
 
-import android.os.Build;
 import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
 
-import com.google.firebase.database.FirebaseDatabase;
 import com.nguyenducdungbk.myapp.interactor.LoginInteractor;
-import com.nguyenducdungbk.myapp.network.response.FoodResponse;
 import com.nguyenducdungbk.myapp.network.response.UserResponse;
 import com.nguyenducdungbk.myapp.presenter.LoginPresenter;
 import com.nguyenducdungbk.myapp.view.LoginView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -29,7 +21,6 @@ public final class LoginPresenterImpl extends BasePresenterImpl<LoginView> imple
      */
     @NonNull
     private final LoginInteractor mInteractor;
-    private LinkedHashMap<String, UserResponse> userList;
 
     // The view is available using the mView variable
 

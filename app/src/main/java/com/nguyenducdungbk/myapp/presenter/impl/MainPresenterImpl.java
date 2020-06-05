@@ -3,8 +3,12 @@ package com.nguyenducdungbk.myapp.presenter.impl;
 import android.support.annotation.NonNull;
 
 import com.nguyenducdungbk.myapp.interactor.MainInteractor;
+import com.nguyenducdungbk.myapp.network.response.FoodResponse;
 import com.nguyenducdungbk.myapp.presenter.MainPresenter;
 import com.nguyenducdungbk.myapp.view.MainView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -14,6 +18,8 @@ public final class MainPresenterImpl extends BasePresenterImpl<MainView> impleme
      */
     @NonNull
     private final MainInteractor mInteractor;
+
+    public static List<FoodResponse> foodOrder = new ArrayList<>();
 
     // The view is available using the mView variable
 
@@ -44,5 +50,15 @@ public final class MainPresenterImpl extends BasePresenterImpl<MainView> impleme
          */
 
         super.onPresenterDestroyed();
+    }
+
+    @Override
+    public void addFoodOrder(FoodResponse foodResponse) {
+        foodOrder.add(foodResponse);
+    }
+
+    @Override
+    public void removeFoodOrder(FoodResponse foodResponse) {
+        foodOrder.remove(foodResponse);
     }
 }

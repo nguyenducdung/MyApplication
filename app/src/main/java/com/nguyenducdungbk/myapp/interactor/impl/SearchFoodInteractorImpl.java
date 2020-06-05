@@ -20,7 +20,7 @@ public final class SearchFoodInteractorImpl implements SearchFoodInteractor {
 
     @Override
     public List<FoodResponse> getListFood() {
-        return restaurantData.getFoodList();
+        return null;
     }
 
     @Override

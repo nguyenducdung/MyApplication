@@ -44,11 +44,80 @@ public final class HomepagePresenterImpl extends BasePresenterImpl<HomepageView>
             if (mInteractor.getUser() != null) {
                 mView.updateUserName(mInteractor.getUser().getName());
             }
-            if (mInteractor.getListFood() != null) {
-                mView.updateListFood(mInteractor.getListFood());
-            }
+            initFoodHistory();
+            initFoodPromotion();
+            initFoodSuggest();
             compositeDisposable.add(RxBus.getInstance().subscribe(editUser));
         }
+    }
+
+    private void initFoodSuggest() {
+        compositeDisposable.add(mInteractor.getListFoodSuggest()
+                .doOnSubscribe(disposable -> {
+                    if (mView != null) {
+                        mView.showLoading();
+                    }
+                })
+                .doFinally(() -> {
+                    if (mView != null) {
+                        mView.hiddenLoading();
+                    }
+                })
+                .subscribe(response -> {
+                    if (response != null && mView != null) {
+                        if (response.getFoodResponses().size() > 5) {
+                            mView.initFoodSuggest(response.getFoodResponses().subList(0, 4));
+                        } else {
+                            mView.initFoodSuggest(response.getFoodResponses());
+                        }
+                    }
+                }, Throwable::printStackTrace));
+    }
+
+    private void initFoodPromotion() {
+        compositeDisposable.add(mInteractor.getListFoodPromotion()
+                .doOnSubscribe(disposable -> {
+                    if (mView != null) {
+                        mView.showLoading();
+                    }
+                })
+                .doFinally(() -> {
+                    if (mView != null) {
+                        mView.hiddenLoading();
+                    }
+                })
+                .subscribe(response -> {
+                    if (response != null && mView != null) {
+                        if (response.getFoodResponses().size() > 5) {
+                            mView.initFoodPromotion(response.getFoodResponses().subList(0, 4));
+                        } else {
+                            mView.initFoodPromotion(response.getFoodResponses());
+                        }
+                    }
+                }, Throwable::printStackTrace));
+    }
+
+    private void initFoodHistory() {
+        compositeDisposable.add(mInteractor.getListFoodHistory()
+                .doOnSubscribe(disposable -> {
+                    if (mView != null) {
+                        mView.showLoading();
+                    }
+                })
+                .doFinally(() -> {
+                    if (mView != null) {
+                        mView.hiddenLoading();
+                    }
+                })
+                .subscribe(response -> {
+                    if (response != null && mView != null) {
+                        if (response.getFoodResponses().size() > 5) {
+                            mView.initFoodHistory(response.getFoodResponses().subList(0, 4));
+                        } else {
+                            mView.initFoodHistory(response.getFoodResponses());
+                        }
+                    }
+                }, Throwable::printStackTrace));
     }
 
     @Override

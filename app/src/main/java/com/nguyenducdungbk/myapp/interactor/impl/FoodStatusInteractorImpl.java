@@ -23,6 +23,6 @@ public final class FoodStatusInteractorImpl implements FoodStatusInteractor {
 
     @Override
     public List<FoodResponse> getListFood() {
-        return restaurantData.getFoodList();
+        return null;
     }
 }
