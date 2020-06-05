@@ -5,9 +5,11 @@ import android.support.annotation.NonNull;
 import com.nguyenducdungbk.myapp.data.RestaurantData;
 import com.nguyenducdungbk.myapp.interactor.FoodStatusInteractor;
 import com.nguyenducdungbk.myapp.interactor.impl.FoodStatusInteractorImpl;
+import com.nguyenducdungbk.myapp.network.request.Apis;
 import com.nguyenducdungbk.myapp.presenter.FoodStatusPresenter;
 import com.nguyenducdungbk.myapp.presenter.impl.FoodStatusPresenterImpl;
 import com.nguyenducdungbk.myapp.presenter.loader.PresenterFactory;
+import com.nguyenducdungbk.myapp.utils.rx.RxSchedulers;
 
 import dagger.Module;
 import dagger.Provides;
@@ -15,8 +17,8 @@ import dagger.Provides;
 @Module
 public final class FoodStatusViewModule {
     @Provides
-    public FoodStatusInteractor provideInteractor(RestaurantData restaurantData) {
-        return new FoodStatusInteractorImpl(restaurantData);
+    public FoodStatusInteractor provideInteractor(RestaurantData restaurantData, Apis apis, RxSchedulers rxSchedulers) {
+        return new FoodStatusInteractorImpl(restaurantData, apis, rxSchedulers);
     }
 
     @Provides

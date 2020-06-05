@@ -19,6 +19,7 @@ import com.nguyenducdungbk.myapp.databinding.FragmentProfileBinding;
 import com.nguyenducdungbk.myapp.injection.AppComponent;
 import com.nguyenducdungbk.myapp.injection.DaggerProfileViewComponent;
 import com.nguyenducdungbk.myapp.injection.ProfileViewModule;
+import com.nguyenducdungbk.myapp.network.response.VoucherResponse;
 import com.nguyenducdungbk.myapp.presenter.ProfilePresenter;
 import com.nguyenducdungbk.myapp.presenter.loader.PresenterFactory;
 import com.nguyenducdungbk.myapp.utils.UIUtil;
@@ -26,6 +27,7 @@ import com.nguyenducdungbk.myapp.view.ProfileView;
 import com.nguyenducdungbk.myapp.view.custom.AppBarStateChangeListener;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -151,7 +153,7 @@ public final class ProfileFragment extends BaseFragment<ProfilePresenter, Profil
         binding.ivFavorite.setColorFilter(ContextCompat.getColor(mContext, R.color.black_A4A6A8));
         initViewTreeLocation();
         binding.ivSetting.setColorFilter(Color.WHITE);
-        profileAdapter = new ProfileAdapter();
+        profileAdapter = new ProfileAdapter(getContext());
         binding.rvVoucher.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         binding.rvVoucher.setAdapter(profileAdapter);
         binding.ivFavorite.setOnClickListener(editProfileClickListener);
@@ -288,5 +290,12 @@ public final class ProfileFragment extends BaseFragment<ProfilePresenter, Profil
     @Override
     public void updateUser(String name) {
         binding.tvTitle.setText(name);
+    }
+
+    @Override
+    public void initListVoucher(List<VoucherResponse> voucherResponses) {
+        if (profileAdapter != null) {
+            profileAdapter.setVoucherResponses(voucherResponses);
+        }
     }
 }

@@ -3,6 +3,7 @@ package com.nguyenducdungbk.myapp.network.request;
 import com.nguyenducdungbk.myapp.network.response.BaseResponse;
 import com.nguyenducdungbk.myapp.network.response.FoodFirebase;
 import com.nguyenducdungbk.myapp.network.response.User;
+import com.nguyenducdungbk.myapp.network.response.Vouchers;
 
 import java.util.Map;
 
@@ -41,5 +42,8 @@ public interface Apis {
 
     @GET("api/food/endow")
     Single<FoodFirebase> getListFoodPromotion(@Header("Authorization") String token);
+
+    @GET("api/voucher/get-by-customer")
+    Single<Vouchers> getListVoucher(@Header("Authorization") String token);
 
 }

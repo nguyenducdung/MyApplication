@@ -19,6 +19,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import static com.nguyenducdungbk.myapp.view.impl.HomeFragment.POSITION_TAB_FOOD;
+
 public final class HomepageFragment extends BaseFragment<HomepagePresenter, HomepageView, FragmentHomepageBinding> implements HomepageView {
     @Inject
     PresenterFactory<HomepagePresenter> mPresenterFactory;
@@ -73,10 +75,13 @@ public final class HomepageFragment extends BaseFragment<HomepagePresenter, Home
         }));
         binding.fcbAgainFood.setTitle(getString(R.string.dat_lai_lan_nua));
         binding.fcbAgainFood.setOnItemClickFood(view -> {
-            Bundle bundle = new Bundle();
-            bundle.putString(FoodListFragment.TITLE_TOOLBAR, getString(R.string.dat_lai_lan_nua));
-            bundle.putString(FoodListFragment.TYPE_SCREEN, FoodListFragment.TYPE_HISTORY);
-            getViewController().addFragment(FoodListFragment.class, bundle);
+//            Bundle bundle = new Bundle();
+//            bundle.putString(FoodListFragment.TITLE_TOOLBAR, getString(R.string.dat_lai_lan_nua));
+//            bundle.putString(FoodListFragment.TYPE_SCREEN, FoodListFragment.TYPE_HISTORY);
+//            getViewController().addFragment(FoodListFragment.class, bundle);
+            if (getParentFragment() instanceof HomeFragment) {
+                ((HomeFragment) getParentFragment()).openTab(POSITION_TAB_FOOD, false);
+            }
         });
         binding.fcbAgainFood.setOnItemClick(foodResponse -> new FoodDetailDialog(getContext(), foodResponse, foodResponse1 -> {
             if (getActivity() != null) {

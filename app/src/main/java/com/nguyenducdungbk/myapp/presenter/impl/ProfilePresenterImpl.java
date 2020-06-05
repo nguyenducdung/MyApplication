@@ -44,8 +44,29 @@ public final class ProfilePresenterImpl extends BasePresenterImpl<ProfileView> i
             if (mInteractor.getUser() != null) {
                 mView.updateUser(mInteractor.getUser().getName());
             }
+
+            initListVoucher();
             compositeDisposable.add(RxBus.getInstance().subscribe(editUser));
         }
+    }
+
+    private void initListVoucher() {
+        compositeDisposable.add(mInteractor.getListVoucher()
+                .doOnSubscribe(disposable -> {
+                    if (mView != null) {
+                        mView.showLoading();
+                    }
+                })
+                .doFinally(() -> {
+                    if (mView != null) {
+                        mView.hiddenLoading();
+                    }
+                })
+                .subscribe(response -> {
+                    if (response != null && mView != null) {
+                        mView.initListVoucher(response.getVoucherResponses());
+                    }
+                }, Throwable::printStackTrace));
     }
 
     @Override

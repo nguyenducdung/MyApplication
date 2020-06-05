@@ -32,20 +32,7 @@ public final class FoodStatusPresenterImpl extends BasePresenterImpl<FoodStatusV
 
         // Your code here. Your view is available using mView and will not be null until next onStop()
         if (viewCreated && mView != null) {
-//            if (mInteractor.getUser() != null && mInteractor.getUser().getOrderOld() != null) {
-//                List<FoodResponse> foodResponses = new ArrayList<>();
-//                String[] foodOrder = mInteractor.getUser().getOrderOld().split(",");
-//                for (int i = 0; i < foodOrder.length ; i++) {
-//                    for (FoodResponse foodResponse : mInteractor.getListFood()) {
-//                        if (foodOrder[i].trim().equalsIgnoreCase(String.valueOf(foodResponse.getId()))) {
-//                            foodResponses.add(foodResponse);
-//                        }
-//                    }
-//                }
-//                mView.updateListFood(foodResponses);
-//            } else {
-//                mView.showNoData();
-//            }
+            initFoodHistory();
         }
     }
 
@@ -64,5 +51,29 @@ public final class FoodStatusPresenterImpl extends BasePresenterImpl<FoodStatusV
          */
 
         super.onPresenterDestroyed();
+    }
+
+
+    private void initFoodHistory() {
+        compositeDisposable.add(mInteractor.getListFoodHistory()
+                .doOnSubscribe(disposable -> {
+                    if (mView != null) {
+                        mView.showLoading();
+                    }
+                })
+                .doFinally(() -> {
+                    if (mView != null) {
+                        mView.hiddenLoading();
+                    }
+                })
+                .subscribe(response -> {
+                    if (response != null && mView != null) {
+                        if (response.getFoodResponses().isEmpty()) {
+                            mView.showNoData();
+                        } else {
+                            mView.updateListFood(response.getFoodResponses());
+                        }
+                    }
+                }, Throwable::printStackTrace));
     }
 }
