@@ -4,13 +4,20 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.nguyenducdungbk.myapp.interactor.SearchFoodInteractor;
+import com.nguyenducdungbk.myapp.network.response.UserResponse;
 import com.nguyenducdungbk.myapp.presenter.SearchFoodPresenter;
 import com.nguyenducdungbk.myapp.utils.sharedpreference.RxPreferenceHelper;
 import com.nguyenducdungbk.myapp.view.SearchFoodView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.List;
 
 import javax.inject.Inject;
+
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 public final class SearchFoodPresenterImpl extends BasePresenterImpl<SearchFoodView> implements SearchFoodPresenter {
     /**
@@ -58,9 +65,29 @@ public final class SearchFoodPresenterImpl extends BasePresenterImpl<SearchFoodV
 
     @Override
     public void searchData(String searchQuery) {
-        if (mView != null) {
-            mView.updateListFood(mInteractor.getListFood());
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("keyword", searchQuery);
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
+        RequestBody body = RequestBody.create(MediaType.parse("text/plain"), jsonObject.toString());
+        compositeDisposable.add(mInteractor.searchFood(body)
+                .doOnSubscribe(disposable -> {
+                    if (mView != null) {
+                        mView.showLoading();
+                    }
+                })
+                .doFinally(() -> {
+                    if (mView != null) {
+                        mView.hiddenLoading();
+                    }
+                })
+                .subscribe(response -> {
+                    if (response != null && mView != null) {
+                        mView.updateListFood(response.getFoodResponses());
+                    }
+                }, Throwable::printStackTrace));
     }
 
     @Override

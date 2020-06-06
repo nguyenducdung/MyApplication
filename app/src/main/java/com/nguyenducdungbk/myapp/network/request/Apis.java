@@ -39,6 +39,10 @@ public interface Apis {
     @POST("api/customer/update")
     Single<CustomerResponse> updateUser(@Header("Authorization") String token, @Body RequestBody body);
 
+    @Headers({"Content-Type: application/json"})
+    @POST("api/food/search")
+    Single<FoodFirebase> searchFood(@Header("Authorization") String token, @Body RequestBody body);
+
     @GET("api/food/history")
     Single<FoodFirebase> getListFoodHistory(@Header("Authorization") String token);
 
