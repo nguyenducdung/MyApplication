@@ -294,8 +294,15 @@ public final class ProfileFragment extends BaseFragment<ProfilePresenter, Profil
 
     @Override
     public void initListVoucher(List<VoucherResponse> voucherResponses) {
-        if (profileAdapter != null) {
-            profileAdapter.setVoucherResponses(voucherResponses);
+        if (voucherResponses != null && !voucherResponses.isEmpty()) {
+            if (profileAdapter != null) {
+                binding.tvEmpty.setVisibility(View.GONE);
+                binding.rvVoucher.setVisibility(View.VISIBLE);
+                profileAdapter.setVoucherResponses(voucherResponses);
+            }
+        } else {
+            binding.tvEmpty.setVisibility(View.VISIBLE);
+            binding.rvVoucher.setVisibility(View.GONE);
         }
     }
 }

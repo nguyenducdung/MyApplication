@@ -16,10 +16,23 @@
             android:src="@drawable/voucher"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_dp120"/>
+
+        <TextView
+            android:text="Ưu đãi giảm"
+            android:layout_marginTop="@dimen/_dp8"
+            app:layout_constraintEnd_toEndOf="@id/iv_voucher"
+            app:layout_constraintStart_toStartOf="@id/iv_voucher"
+            android:textColor="@color/color_3A454D"
+            android:textSize="@dimen/text_size18"
+            android:fontFamily="@font/lato_bold"
+            android:id="@+id/tv_title"
+            app:layout_constraintTop_toBottomOf="@id/iv_voucher"
+            android:layout_width="@dimen/_dp0"
+            android:layout_height="wrap_content"/>
         
         <View
             android:layout_marginTop="@dimen/_dp8"
-            app:layout_constraintTop_toBottomOf="@id/iv_voucher"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
             android:background="#BDBDBD"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"/>

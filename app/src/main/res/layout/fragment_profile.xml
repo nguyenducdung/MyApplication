@@ -150,6 +150,21 @@
             android:background="@color/white"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
+        <TextView
+            android:layout_below="@id/app_bar_layout"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:visibility="gone"
+            android:id="@+id/tvEmpty"
+            android:background="@color/white"
+            android:paddingTop="@dimen/_dp12"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/lato_regular"
+            android:gravity="top|center"
+            android:text="@string/no_voucher"
+            android:textColor="@color/black_3A454D"
+            android:textSize="@dimen/text_size16" />
+
     </android.support.design.widget.CoordinatorLayout>
 
 </layout>

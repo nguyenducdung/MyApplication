@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.nguyenducdungbk.myapp.R;
 import com.nguyenducdungbk.myapp.databinding.ItemVoucherBinding;
 import com.nguyenducdungbk.myapp.network.response.VoucherResponse;
@@ -35,12 +37,16 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.VoucherV
 
     @Override
     public void onBindViewHolder(@NonNull VoucherViewHolder voucherViewHolder, int i) {
-
+        voucherViewHolder.binding.tvTitle.setText("Ưu đãi giảm giá " + voucherResponses.get(i).getDiscountPercent() + " %");
+        Glide.with(context)
+                .load(R.drawable.voucher)
+                .transform(new RoundedCorners(18))
+                .into(voucherViewHolder.binding.ivVoucher);
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return voucherResponses != null ? voucherResponses.size() : 0;
     }
 
     class VoucherViewHolder extends RecyclerView.ViewHolder {
