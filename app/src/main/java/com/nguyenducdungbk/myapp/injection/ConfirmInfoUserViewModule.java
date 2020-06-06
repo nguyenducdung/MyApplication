@@ -5,9 +5,11 @@ import android.support.annotation.NonNull;
 import com.nguyenducdungbk.myapp.data.RestaurantData;
 import com.nguyenducdungbk.myapp.interactor.ConfirmInfoUserInteractor;
 import com.nguyenducdungbk.myapp.interactor.impl.ConfirmInfoUserInteractorImpl;
+import com.nguyenducdungbk.myapp.network.request.Apis;
 import com.nguyenducdungbk.myapp.presenter.ConfirmInfoUserPresenter;
 import com.nguyenducdungbk.myapp.presenter.impl.ConfirmInfoUserPresenterImpl;
 import com.nguyenducdungbk.myapp.presenter.loader.PresenterFactory;
+import com.nguyenducdungbk.myapp.utils.rx.RxSchedulers;
 
 import dagger.Module;
 import dagger.Provides;
@@ -15,8 +17,8 @@ import dagger.Provides;
 @Module
 public final class ConfirmInfoUserViewModule {
     @Provides
-    public ConfirmInfoUserInteractor provideInteractor(RestaurantData restaurantData) {
-        return new ConfirmInfoUserInteractorImpl(restaurantData);
+    public ConfirmInfoUserInteractor provideInteractor(RestaurantData restaurantData, Apis apis, RxSchedulers rxSchedulers) {
+        return new ConfirmInfoUserInteractorImpl(restaurantData, apis, rxSchedulers);
     }
 
     @Provides

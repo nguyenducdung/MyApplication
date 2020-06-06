@@ -84,6 +84,7 @@ public final class ConfirmInfoUserFragment extends BaseFragment<ConfirmInfoUserP
                 mPresenter.saveUser();
             }
         });
+        binding.toolbar.setOnBackClickListener(v -> backPressed());
     }
 
     @Override
@@ -91,15 +92,14 @@ public final class ConfirmInfoUserFragment extends BaseFragment<ConfirmInfoUserP
         binding.tvNameSns.setText(user.getName());
         binding.edtName.setText(user.getName());
         binding.edtPhone.setText(user.getPhone());
-//        binding.etBirthday.setText(user.getDateOfBirth());
-//        gender = user.getGender();
-//        if (user.getGender().equalsIgnoreCase(Define.GENDER_NAM)) {
-//            binding.btnMale.setSelected(true);
-//            binding.btnFemale.setSelected(false);
-//        } else {
-//            binding.btnMale.setSelected(false);
-//            binding.btnFemale.setSelected(true);
-//        }
+        if (user.getGender() == 1) {
+            binding.btnMale.setSelected(true);
+            binding.btnFemale.setSelected(false);
+        } else {
+            binding.btnMale.setSelected(false);
+            binding.btnFemale.setSelected(true);
+        }
+        binding.etBirthday.setText(user.getBirthday());
     }
 
     @Override

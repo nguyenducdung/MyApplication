@@ -1,6 +1,7 @@
 package com.nguyenducdungbk.myapp.network.request;
 
 import com.nguyenducdungbk.myapp.network.response.BaseResponse;
+import com.nguyenducdungbk.myapp.network.response.CustomerResponse;
 import com.nguyenducdungbk.myapp.network.response.FoodFirebase;
 import com.nguyenducdungbk.myapp.network.response.User;
 import com.nguyenducdungbk.myapp.network.response.Vouchers;
@@ -33,6 +34,10 @@ public interface Apis {
     @Headers({"Content-Type: application/json"})
     @POST("api/login")
     Single<User> loginUser(@Body RequestBody body);
+
+    @Headers({"Content-Type: application/json"})
+    @POST("api/customer/update")
+    Single<CustomerResponse> updateUser(@Header("Authorization") String token, @Body RequestBody body);
 
     @GET("api/food/history")
     Single<FoodFirebase> getListFoodHistory(@Header("Authorization") String token);

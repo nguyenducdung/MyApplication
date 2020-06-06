@@ -12,7 +12,13 @@ import com.nguyenducdungbk.myapp.utils.StringUtil;
 import com.nguyenducdungbk.myapp.utils.rx.RxBus;
 import com.nguyenducdungbk.myapp.view.ConfirmInfoUserView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import javax.inject.Inject;
+
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 public final class ConfirmInfoUserPresenterImpl extends BasePresenterImpl<ConfirmInfoUserView> implements ConfirmInfoUserPresenter {
     /**
@@ -83,14 +89,36 @@ public final class ConfirmInfoUserPresenterImpl extends BasePresenterImpl<Confir
             mView.showErrorDialog(R.string.vui_long_nhap_date);
             return;
         }
-        mInteractor.deleteUser();
-        UserResponse userResponse = new UserResponse();
-        userResponse.setName(mView.getName());
-//        userResponse.setPhone(mView.getPhone());
-//        userResponse.setGender(mView.getGender());
-//        userResponse.setDateOfBirth(mView.getDate());
-        mInteractor.saveUser(userResponse);
-        mView.showUpdateSuccess();
-        RxBus.getInstance().publish(Define.Bus.EDIT_USER);
+
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("name", mView.getName());
+            jsonObject.put("birthday", mView.getDate());
+            jsonObject.put("phone", mView.getPhone());
+            jsonObject.put("gender", mView.getGender().equalsIgnoreCase(Define.GENDER_NAM) ? 1 : 0);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        RequestBody body = RequestBody.create(MediaType.parse("text/plain"), jsonObject.toString());
+        compositeDisposable.add(mInteractor.updateUser(body)
+                .doOnSubscribe(disposable -> {
+                    if (mView != null) {
+                        mView.showLoading();
+                    }
+                })
+                .doFinally(() -> {
+                    if (mView != null) {
+                        mView.hiddenLoading();
+                    }
+                })
+                .subscribe(response -> {
+                    if (response != null && mView != null) {
+                        mInteractor.deleteUser();
+                        mInteractor.saveUser(response.getUserResponse());
+                        mView.showUpdateSuccess();
+                        RxBus.getInstance().publish(Define.Bus.EDIT_USER);
+                    }
+                }, Throwable::printStackTrace));
+
     }
 }
