@@ -3,6 +3,7 @@ package com.nguyenducdungbk.myapp.network.request;
 import com.nguyenducdungbk.myapp.network.response.BaseResponse;
 import com.nguyenducdungbk.myapp.network.response.CustomerResponse;
 import com.nguyenducdungbk.myapp.network.response.FoodFirebase;
+import com.nguyenducdungbk.myapp.network.response.TypeFoodResponse;
 import com.nguyenducdungbk.myapp.network.response.User;
 import com.nguyenducdungbk.myapp.network.response.Vouchers;
 
@@ -22,37 +23,40 @@ import retrofit2.http.POST;
 public interface Apis {
 
     @FormUrlEncoded
-    @POST("user/login")
+    @POST("/user/login")
     Single<BaseResponse> login(@FieldMap Map<String, String> loginFields);
 
-    @GET("list_user.json")
+    @GET("/list_user.json")
     Single<User> getUserList();
 
-    @GET("list_food.json")
+    @GET("/list_food.json")
     Single<FoodFirebase> getFoodList();
 
     @Headers({"Content-Type: application/json"})
-    @POST("api/login")
+    @POST("/api/login")
     Single<User> loginUser(@Body RequestBody body);
 
     @Headers({"Content-Type: application/json"})
-    @POST("api/customer/update")
+    @POST("/api/customer/update")
     Single<CustomerResponse> updateUser(@Header("Authorization") String token, @Body RequestBody body);
 
     @Headers({"Content-Type: application/json"})
-    @POST("api/food/search")
+    @POST("/api/food/search")
     Single<FoodFirebase> searchFood(@Header("Authorization") String token, @Body RequestBody body);
 
-    @GET("api/food/history")
+    @GET("/api/food/history")
     Single<FoodFirebase> getListFoodHistory(@Header("Authorization") String token);
 
-    @GET("api/food/suggestion")
+    @GET("/api/food/suggestion")
     Single<FoodFirebase> getListFoodSuggest(@Header("Authorization") String token);
 
-    @GET("api/food/endow")
+    @GET("/api/food/endow")
     Single<FoodFirebase> getListFoodPromotion(@Header("Authorization") String token);
 
-    @GET("api/voucher/get-by-customer")
+    @GET("/api/voucher/get-by-customer")
     Single<Vouchers> getListVoucher(@Header("Authorization") String token);
+
+    @GET("/api/type/get-all")
+    Single<TypeFoodResponse> getTypeFood(@Header("Authorization") String token);
 
 }

@@ -19,7 +19,7 @@
     <ImageView
         android:id="@+id/iv_food"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/_dp100"
+        android:layout_height="@dimen/_dp200"
         android:layout_marginStart="@dimen/_dp24"
         android:layout_marginEnd="@dimen/_dp24"
         android:adjustViewBounds="true"
@@ -39,7 +39,7 @@
         android:textColor="@color/black_3A454D"
         android:fontFamily="@font/lato_regular"
         android:text="Sườn xào chua ngọt là món ăn chính trong bữa cơm gia đình Việt Nam, đây là món ăn không bị ngán, mà rất giàu chất dinh dưỡng. Cách làm sườn xào chua ngọt miền Bắc thì khá đơn giản với nguyên liệu chính là sườn, còn miền Nam thì nhiều màu sắc, và hương vị"
-        android:textSize="@dimen/text_size14"
+        android:textSize="@dimen/_dp16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_food" />

@@ -5,9 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class FoodCategoryResponse extends RealmObject {
-    @PrimaryKey
-    private int key;
+public class FoodCategoryResponse {
 
     @SerializedName("id")
     private Integer id;

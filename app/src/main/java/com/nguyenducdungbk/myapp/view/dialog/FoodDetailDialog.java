@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.nguyenducdungbk.myapp.BuildConfig;
 import com.nguyenducdungbk.myapp.R;
 import com.nguyenducdungbk.myapp.network.response.FoodResponse;
 import com.nguyenducdungbk.myapp.view.custom.RestaurantToolbar;
@@ -26,7 +27,7 @@ public class FoodDetailDialog {
         toolbar.setOnBackClickListener(view -> dialog.dismiss());
         toolbar.setTextTitleToobar(foodResponse.getName());
         Glide.with(context)
-                .load(foodResponse.getImage())
+                .load(BuildConfig.API_BASE_URL + foodResponse.getImage())
                 .into(ivFood);
         tvDescription.setText(foodResponse.getInfo());
         dialog.setContentView(sheetView);
@@ -37,7 +38,10 @@ public class FoodDetailDialog {
                 BottomSheetBehavior.from(bottomSheetInternal).setState(BottomSheetBehavior.STATE_EXPANDED);
             }
         });
-        btnOrder.setOnClickListener(v -> onClickFood.onClickFood(foodResponse));
+        btnOrder.setOnClickListener(v -> {
+            onClickFood.onClickFood(foodResponse);
+            dialog.dismiss();
+        });
         dialog.show();
     }
 

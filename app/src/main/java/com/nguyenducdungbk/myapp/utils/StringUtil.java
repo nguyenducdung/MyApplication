@@ -1,5 +1,7 @@
 package com.nguyenducdungbk.myapp.utils;
 
+import android.annotation.SuppressLint;
+
 import java.text.Normalizer;
 import java.util.regex.Pattern;
 
@@ -19,5 +21,21 @@ public class StringUtil {
 
     public static String createEmail(String name) {
         return removeAccent(name) + "@gmail.com";
+    }
+
+
+    @SuppressLint("DefaultLocale")
+    public static String convertViewQuantity(long view) {
+        long million = 1000000;
+        long thousand = 1000;
+        String rs = view + "";
+        if (view >= million) {
+            double v = view * 1f / million;
+            rs = String.format("%.1fTr", v);
+        } else if (view >= 1000) {
+            double v = view * 1f / thousand;
+            rs = String.format("%.1f", v);
+        }
+        return (rs);
     }
 }

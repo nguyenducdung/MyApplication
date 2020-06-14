@@ -7,6 +7,7 @@ import com.nguyenducdungbk.myapp.interactor.SearchFoodInteractor;
 import com.nguyenducdungbk.myapp.network.request.Apis;
 import com.nguyenducdungbk.myapp.network.response.FoodFirebase;
 import com.nguyenducdungbk.myapp.network.response.FoodResponse;
+import com.nguyenducdungbk.myapp.network.response.TypeFoodResponse;
 import com.nguyenducdungbk.myapp.utils.rx.RxSchedulers;
 import com.nguyenducdungbk.myapp.utils.sharedpreference.RxPreferenceHelper;
 
@@ -46,6 +47,13 @@ public final class SearchFoodInteractorImpl implements SearchFoodInteractor {
     @Override
     public Single<FoodFirebase> searchFood(RequestBody body) {
         return apis.searchFood(restaurantData.getUser().getToken(), body)
+                .observeOn(rxSchedulers.androidThread())
+                .subscribeOn(rxSchedulers.io());
+    }
+
+    @Override
+    public Single<TypeFoodResponse> getTypeFood() {
+        return apis.getTypeFood(restaurantData.getUser().getToken())
                 .observeOn(rxSchedulers.androidThread())
                 .subscribeOn(rxSchedulers.io());
     }

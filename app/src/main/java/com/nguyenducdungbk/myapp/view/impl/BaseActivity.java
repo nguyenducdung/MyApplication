@@ -19,6 +19,7 @@ import com.nguyenducdungbk.myapp.presenter.BasePresenter;
 import com.nguyenducdungbk.myapp.presenter.loader.PresenterFactory;
 import com.nguyenducdungbk.myapp.presenter.loader.PresenterLoader;
 import com.nguyenducdungbk.myapp.utils.Define;
+import com.nguyenducdungbk.myapp.utils.DeviceUtil;
 import com.nguyenducdungbk.myapp.view.BaseView;
 import com.nguyenducdungbk.myapp.view.dialog.MyDialog;
 import com.nguyenducdungbk.myapp.view.dialog.MyLoading;
@@ -167,6 +168,7 @@ public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseVie
 
     @Override
     public void onBackPressed() {
+        DeviceUtil.hideSoftKeyboard(this);
         if (getViewController() != null && getViewController().getCurrentFragment() != null) {
             if (getViewController().getCurrentFragment().backPressed()) {
                 super.onBackPressed();

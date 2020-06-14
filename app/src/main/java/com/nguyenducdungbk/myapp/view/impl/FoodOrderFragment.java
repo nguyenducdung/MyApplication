@@ -9,15 +9,19 @@ import com.nguyenducdungbk.myapp.databinding.FragmentFoodOrderBinding;
 import com.nguyenducdungbk.myapp.injection.AppComponent;
 import com.nguyenducdungbk.myapp.injection.DaggerFoodOrderViewComponent;
 import com.nguyenducdungbk.myapp.injection.FoodOrderViewModule;
+import com.nguyenducdungbk.myapp.network.response.FoodResponse;
 import com.nguyenducdungbk.myapp.presenter.FoodOrderPresenter;
 import com.nguyenducdungbk.myapp.presenter.loader.PresenterFactory;
 import com.nguyenducdungbk.myapp.view.FoodOrderView;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
 public final class FoodOrderFragment extends BaseFragment<FoodOrderPresenter, FoodOrderView, FragmentFoodOrderBinding> implements FoodOrderView {
     @Inject
     PresenterFactory<FoodOrderPresenter> mPresenterFactory;
+    private FoodOrderAdapter adapter;
 
     // Your presenter is available using the mPresenter variable
 
@@ -56,8 +60,16 @@ public final class FoodOrderFragment extends BaseFragment<FoodOrderPresenter, Fo
         if (getActivity() != null) {
             ((MainActivity) getActivity()).hideIconOrder();
         }
-        FoodOrderAdapter adapter = new FoodOrderAdapter();
+        adapter = new FoodOrderAdapter();
         binding.rvFood.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         binding.rvFood.setAdapter(adapter);
+        binding.toolbar.setOnBackClickListener(v -> backPressed());
+    }
+
+    @Override
+    public void initData(List<FoodResponse> foodOrder) {
+        if (adapter != null) {
+            adapter.setFoodResponses(foodOrder);
+        }
     }
 }

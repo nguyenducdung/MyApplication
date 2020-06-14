@@ -25,7 +25,7 @@ public class ApiModule {
     @Singleton
     Apis provideApiService(OkHttpClient client, GsonConverterFactory gson, RxJava2CallAdapterFactory rxAdapter) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.76:8000/")
+                .baseUrl(BuildConfig.API_BASE_URL)
                 .client(client)
                 .addConverterFactory(gson)
                 .addCallAdapterFactory(rxAdapter)

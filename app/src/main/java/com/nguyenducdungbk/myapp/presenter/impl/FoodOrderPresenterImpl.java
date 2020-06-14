@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.nguyenducdungbk.myapp.interactor.FoodOrderInteractor;
 import com.nguyenducdungbk.myapp.presenter.FoodOrderPresenter;
+import com.nguyenducdungbk.myapp.presenter.MainPresenter;
 import com.nguyenducdungbk.myapp.view.FoodOrderView;
 
 import javax.inject.Inject;
@@ -27,6 +28,11 @@ public final class FoodOrderPresenterImpl extends BasePresenterImpl<FoodOrderVie
         super.onStart(viewCreated);
 
         // Your code here. Your view is available using mView and will not be null until next onStop()
+        if (viewCreated && mView != null) {
+            if (MainPresenterImpl.foodOrder != null) {
+                mView.initData(MainPresenterImpl.foodOrder);
+            }
+        }
     }
 
     @Override

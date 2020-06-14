@@ -15,10 +15,10 @@ android {
     buildTypes {
         debug { //FIXME Change debug config
 //                signingConfig signingConfigs.debug
-            buildConfigField "String", "API_BASE_URL", "\"https://datnsmartoder.firebaseio.com/\"" // FIXME
+            buildConfigField "String", "API_BASE_URL", "\"http://192.168.1.76:8000\"" // FIXME
         }
         release {
-            buildConfigField "String", "API_BASE_URL", "\"https://datnsmartoder.firebaseio.com/\""
+            buildConfigField "String", "API_BASE_URL", "\"http://192.168.1.76:8000\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -89,5 +89,8 @@ dependencies {
     // FCM
     implementation 'com.google.firebase:firebase-messaging:17.3.4'
     implementation 'com.google.firebase:firebase-core:16.0.6'
+
+
+    implementation 'org.greenrobot:eventbus:3.1.1'
 
 }

@@ -39,11 +39,27 @@ public final class SearchFoodPresenterImpl extends BasePresenterImpl<SearchFoodV
 
         // Your code here. Your view is available using mView and will not be null until next onStop()
         if (viewCreated && mView != null) {
-            List<String> recentSearches = mInteractor.getRecentMapSearch();
-            if (mView != null) {
-                mView.setRecentSearchData(recentSearches);
-            }
+            getListTab();
         }
+    }
+
+    private void getListTab() {
+        compositeDisposable.add(mInteractor.getTypeFood()
+                .doOnSubscribe(disposable -> {
+                    if (mView != null) {
+                        mView.showLoading();
+                    }
+                })
+                .doFinally(() -> {
+                    if (mView != null) {
+                        mView.hiddenLoading();
+                    }
+                })
+                .subscribe(response -> {
+                    if (response != null && mView != null) {
+                        mView.initTab(response.getFoodCategoryResponses());
+                    }
+                }, Throwable::printStackTrace));
     }
 
     @Override
@@ -85,7 +101,7 @@ public final class SearchFoodPresenterImpl extends BasePresenterImpl<SearchFoodV
                 })
                 .subscribe(response -> {
                     if (response != null && mView != null) {
-                        mView.updateListFood(response.getFoodResponses());
+//                        mView.updateListFood(response.getFoodResponses());
                     }
                 }, Throwable::printStackTrace));
     }

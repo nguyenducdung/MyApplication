@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.nguyenducdungbk.myapp.BuildConfig;
 import com.nguyenducdungbk.myapp.R;
 import com.nguyenducdungbk.myapp.databinding.ItemFoodVerticalBinding;
 import com.nguyenducdungbk.myapp.network.response.FoodResponse;
@@ -43,7 +44,7 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.FoodLi
     public void onBindViewHolder(@NonNull FoodListViewHolder foodListViewHolder, int i) {
 
         Glide.with(context)
-                .load(foodResponses.get(i).getImage())
+                .load(BuildConfig.API_BASE_URL + foodResponses.get(i).getImage())
                 .into(foodListViewHolder.binding.ivCover);
         foodListViewHolder.binding.tvContent.setText(foodResponses.get(i).getName());
         foodListViewHolder.binding.tvTimeTitle.setText("Giá niêm yết: " + foodResponses.get(i).getPrice() + " đồng");

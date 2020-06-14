@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.nguyenducdungbk.myapp.BuildConfig;
 import com.nguyenducdungbk.myapp.R;
 import com.nguyenducdungbk.myapp.databinding.ItemFoodOrderOldBinding;
 import com.nguyenducdungbk.myapp.network.response.FoodResponse;
@@ -37,7 +38,7 @@ public class FoodStatusAdapter extends RecyclerView.Adapter<FoodStatusAdapter.Fo
     @Override
     public void onBindViewHolder(@NonNull FoodStatusViewHolder holder, int i) {
         Glide.with(context)
-                .load(foodResponses.get(i).getImage())
+                .load(BuildConfig.API_BASE_URL + foodResponses.get(i).getImage())
                 .centerCrop()
                 .into(holder.binding.ivAvatar);
         holder.binding.tvName.setText(foodResponses.get(i).getName());

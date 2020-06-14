@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.impl.ListSearchFoodFragment">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_food"
+            android:paddingStart="@dimen/_dp24"
+            android:paddingEnd="@dimen/_dp24"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:fontFamily="@font/lato_regular"
+            android:id="@+id/tv_empty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_dp14"
+            android:gravity="center"
+            android:text="@string/no_data"
+            android:textColor="@color/color_34404B"
+            android:textSize="@dimen/text_size16"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/pb_loading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </FrameLayout>
+</layout>
+
