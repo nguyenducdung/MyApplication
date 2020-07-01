@@ -76,7 +76,8 @@ public final class ListSearchFoodPresenterImpl extends BasePresenterImpl<ListSea
     public void loadData() {
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("keyword", keyword.isEmpty() ? "c" : keyword);
+            jsonObject.put("keyword", keyword);
+            jsonObject.put("type_id", idCategory);
         } catch (JSONException e) {
             e.printStackTrace();
         }

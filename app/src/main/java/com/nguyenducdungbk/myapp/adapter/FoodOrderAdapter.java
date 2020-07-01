@@ -1,5 +1,6 @@
 package com.nguyenducdungbk.myapp.adapter;
 
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -7,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
+import com.nguyenducdungbk.myapp.BuildConfig;
 import com.nguyenducdungbk.myapp.R;
 import com.nguyenducdungbk.myapp.databinding.ItemFoodOrderBinding;
 import com.nguyenducdungbk.myapp.network.response.FoodResponse;
@@ -16,9 +19,20 @@ import java.util.List;
 
 public class FoodOrderAdapter extends RecyclerView.Adapter<FoodOrderAdapter.FoodOrderViewHolder> {
     private List<FoodResponse> foodResponses;
+    private Context context;
+    private boolean isOrdering = false;
+
+    public FoodOrderAdapter(Context context) {
+        this.context = context;
+    }
 
     public void setFoodResponses(List<FoodResponse> foodResponses) {
         this.foodResponses = foodResponses;
+    }
+
+    public void setOrdering(boolean ordering) {
+        isOrdering = ordering;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -32,6 +46,10 @@ public class FoodOrderAdapter extends RecyclerView.Adapter<FoodOrderAdapter.Food
     public void onBindViewHolder(@NonNull FoodOrderViewHolder foodOrderViewHolder, int i) {
         foodOrderViewHolder.binding.tvNameFood.setText(foodResponses.get(i).getName());
         foodOrderViewHolder.binding.tvPrice.setText(StringUtil.convertViewQuantity(Long.valueOf(foodResponses.get(i).getPrice())));
+        Glide.with(context)
+                .load(BuildConfig.API_BASE_URL + foodResponses.get(i).getImage())
+                .into(foodOrderViewHolder.binding.ivFood);
+        foodOrderViewHolder.binding.tvEdit.setText(!isOrdering ? "Chỉnh sửa" : "Đang chuẩn bị");
     }
 
     @Override

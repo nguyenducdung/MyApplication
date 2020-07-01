@@ -34,7 +34,7 @@ public class StringUtil {
             rs = String.format("%.1fTr", v);
         } else if (view >= 1000) {
             double v = view * 1f / thousand;
-            rs = String.format("%.1f", v);
+            rs = v + "00";
         }
         return (rs);
     }

@@ -2,9 +2,11 @@ package com.nguyenducdungbk.myapp.view.impl;
 
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.nguyenducdungbk.myapp.MyApp;
 import com.nguyenducdungbk.myapp.R;
 import com.nguyenducdungbk.myapp.databinding.ActivityMainBinding;
@@ -79,6 +81,10 @@ public final class MainActivity extends BaseActivity<MainPresenter, MainView, Ac
             getViewController().addFragment(FoodOrderFragment.class, null);
         });
         getViewController().addFragment(LoginFragment.class, null);
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(this, instanceIdResult -> {
+            String fcmToken = instanceIdResult.getToken();
+            Log.e("FCM token 1", fcmToken);
+        });
     }
 
     @Override

@@ -10,4 +10,8 @@ import java.util.List;
 public interface FoodOrderView extends BaseView {
 
     void initData(List<FoodResponse> foodOrder);
+
+    void initPrice(String price);
+
+    void createBillSuccess();
 }

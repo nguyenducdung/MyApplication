@@ -50,6 +50,7 @@
                 android:textSize="@dimen/text_size14" />
 
             <TextView
+                android:id="@+id/tv_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@id/tv_money_title"
@@ -63,6 +64,24 @@
 
             <Button
                 android:id="@+id/btn_pay"
+                style="@style/RegisterTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_money_title"
+                android:layout_marginStart="@dimen/_dp24"
+                android:layout_marginTop="@dimen/_dp8"
+                android:layout_marginEnd="@dimen/_dp24"
+                android:layout_marginBottom="@dimen/margin_8dp"
+                android:background="@drawable/bg_radius_16dp"
+                android:backgroundTint="@color/color_red_EF5050"
+                android:text="Gọi món"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <Button
+                android:visibility="gone"
+                android:id="@+id/btn_thanhtoan"
                 style="@style/RegisterTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

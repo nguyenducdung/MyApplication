@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@drawable/bg_radius_16dp"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_marginStart="@dimen/_dp24"
+        android:layout_marginTop="@dimen/_dp24"
+        android:layout_marginEnd="@dimen/_dp24"
+        android:id="@+id/tv_title"
+        android:fontFamily="@font/lato_bold"
+        android:textColor="@color/color_34404B"
+        android:textSize="@dimen/text_size18"
+        android:gravity="center"
+        android:text="Hãy cho chúng tôi biết cảm nhận của bạn về món ăn hôm nay!"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginBottom="@dimen/_dp24"
+        android:paddingStart="@dimen/_dp24"
+        android:paddingEnd="@dimen/_dp24"
+        android:clipToPadding="false"
+        android:layout_marginTop="@dimen/_dp12"
+        android:layout_below="@id/tv_title"
+        android:id="@+id/rv_food"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

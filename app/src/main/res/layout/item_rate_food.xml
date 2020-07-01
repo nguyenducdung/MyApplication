@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_dp8">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_dp6"
+            app:cardCornerRadius="@dimen/_dp12"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <com.nguyenducdungbk.myapp.view.custom.SelectableRoundedImageView
+                    android:id="@+id/iv_food"
+                    android:layout_alignStart="@id/rb_rate"
+                    android:layout_alignEnd="@id/rb_rate"
+                    android:layout_width="@dimen/_dp0"
+                    android:layout_height="@dimen/_dp100"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:fontFamily="@font/lato_bold"
+                    android:textSize="@dimen/text_size14"
+                    android:gravity="center"
+                    tools:text="Sườn xào chua ngọt"
+                    android:layout_marginTop="@dimen/_dp4"
+                    android:layout_below="@id/iv_food"
+                    android:id="@+id/tv_name"
+                    android:layout_alignStart="@id/rb_rate"
+                    android:layout_alignEnd="@id/rb_rate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <RatingBar
+                    android:id="@+id/rb_rate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_name"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_dp8"
+                    android:numStars="5"
+                    android:progressDrawable="@drawable/ratingbar_selector"
+                    android:rating="0" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+
+    </RelativeLayout>
+</layout>

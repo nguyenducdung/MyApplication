@@ -86,6 +86,7 @@ public final class FoodListFragment extends BaseFragment<FoodListPresenter, Food
     public void updateListFood(List<FoodResponse> listFood) {
         if (adapter != null) {
             adapter.setFoodResponses(listFood);
+            adapter.notifyDataSetChanged();
         }
     }
 

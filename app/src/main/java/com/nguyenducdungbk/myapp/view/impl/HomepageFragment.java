@@ -3,6 +3,7 @@ package com.nguyenducdungbk.myapp.view.impl;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.view.View;
 
 import com.nguyenducdungbk.myapp.R;
 import com.nguyenducdungbk.myapp.databinding.FragmentHomepageBinding;
@@ -75,10 +76,6 @@ public final class HomepageFragment extends BaseFragment<HomepagePresenter, Home
         }));
         binding.fcbAgainFood.setTitle(getString(R.string.dat_lai_lan_nua));
         binding.fcbAgainFood.setOnItemClickFood(view -> {
-//            Bundle bundle = new Bundle();
-//            bundle.putString(FoodListFragment.TITLE_TOOLBAR, getString(R.string.dat_lai_lan_nua));
-//            bundle.putString(FoodListFragment.TYPE_SCREEN, FoodListFragment.TYPE_HISTORY);
-//            getViewController().addFragment(FoodListFragment.class, bundle);
             if (getParentFragment() instanceof HomeFragment) {
                 ((HomeFragment) getParentFragment()).openTab(POSITION_TAB_FOOD, false);
             }
@@ -123,15 +120,30 @@ public final class HomepageFragment extends BaseFragment<HomepagePresenter, Home
     @Override
     public void initFoodSuggest(List<FoodResponse> foodResponses) {
         binding.fcbOfferFood.setFoodList(foodResponses);
+        if (foodResponses != null && !foodResponses.isEmpty()) {
+            binding.fcbOfferFood.setVisibility(View.VISIBLE);
+        } else {
+            binding.fcbOfferFood.setVisibility(View.GONE);
+        }
     }
 
     @Override
     public void initFoodPromotion(List<FoodResponse> foodResponses) {
         binding.fcbPromotionFood.setFoodList(foodResponses);
+        if (foodResponses != null && !foodResponses.isEmpty()) {
+            binding.fcbPromotionFood.setVisibility(View.VISIBLE);
+        } else {
+            binding.fcbPromotionFood.setVisibility(View.GONE);
+        }
     }
 
     @Override
     public void initFoodHistory(List<FoodResponse> foodResponses) {
         binding.fcbAgainFood.setFoodList(foodResponses);
+        if (foodResponses != null && !foodResponses.isEmpty()) {
+            binding.fcbAgainFood.setVisibility(View.VISIBLE);
+        } else {
+            binding.fcbAgainFood.setVisibility(View.GONE);
+        }
     }
 }

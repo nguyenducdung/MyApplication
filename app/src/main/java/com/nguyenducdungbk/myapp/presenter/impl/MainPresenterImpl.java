@@ -54,6 +54,11 @@ public final class MainPresenterImpl extends BasePresenterImpl<MainView> impleme
 
     @Override
     public void addFoodOrder(FoodResponse foodResponse) {
+        for (FoodResponse foodResponse1 : foodOrder) {
+            if (foodResponse1.getId().equals(foodResponse.getId())) {
+                return;
+            }
+        }
         foodOrder.add(foodResponse);
     }
 
