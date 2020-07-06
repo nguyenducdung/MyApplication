@@ -37,7 +37,7 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.VoucherV
 
     @Override
     public void onBindViewHolder(@NonNull VoucherViewHolder voucherViewHolder, int i) {
-        voucherViewHolder.binding.tvTitle.setText("Ưu đãi giảm giá " + voucherResponses.get(i).getDiscountPercent() + " %");
+        voucherViewHolder.binding.tvTitle.setText("Ưu đãi giảm giá " + 10 + " %");
         Glide.with(context)
                 .load(R.drawable.voucher)
                 .transform(new RoundedCorners(18))
@@ -46,7 +46,7 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.VoucherV
 
     @Override
     public int getItemCount() {
-        return voucherResponses != null ? voucherResponses.size() : 0;
+        return 5;
     }
 
     class VoucherViewHolder extends RecyclerView.ViewHolder {

@@ -301,8 +301,8 @@ public final class ProfileFragment extends BaseFragment<ProfilePresenter, Profil
                 profileAdapter.setVoucherResponses(voucherResponses);
             }
         } else {
-            binding.tvEmpty.setVisibility(View.VISIBLE);
-            binding.rvVoucher.setVisibility(View.GONE);
+            binding.tvEmpty.setVisibility(View.GONE);
+            binding.rvVoucher.setVisibility(View.VISIBLE);
         }
     }
 }
